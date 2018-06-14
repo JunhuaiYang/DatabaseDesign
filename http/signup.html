@@ -13,20 +13,10 @@
 <meta name="description" content="租车系统用户注册" />
 <meta name="keywords" content="注册" />
 
-<!-- Facebook and Twitter integration -->
-<meta property="og:title" content=""/>
-<meta property="og:image" content=""/>
-<meta property="og:url" content=""/>
-<meta property="og:site_name" content=""/>
-<meta property="og:description" content=""/>
-<meta name="twitter:title" content="" />
-<meta name="twitter:image" content="" />
-<meta name="twitter:url" content="" />
-<meta name="twitter:card" content="" />
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <link rel="shortcut icon" href="favicon.ico">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href="css/google.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/style.css">
@@ -36,7 +26,10 @@
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
-	<![endif]-->
+  <![endif]-->
+
+  <!-- myjs -->
+<script src="js/myjs/signin.js"></script>
 
 </head>
 <body class="style-3">
@@ -49,31 +42,50 @@
         <h2>注册</h2>
         <div class="form-group"> </div>
         <div class="form-group">
-          <label for="name" class="sr-only">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="用户名" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="tel" class="sr-only">tel</label>
-          <input type="tel" class="form-control" id="tel" placeholder="电话" autocomplete="off">
+          <label for="username" class="sr-only">username</label>
+          <input type="text" class="form-control" id="username" placeholder="*用户名" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="password" class="sr-only">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="密码" autocomplete="off">
+          <input type="password" class="form-control" id="password" placeholder="*密码" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="re-password" class="sr-only">Re-type Password</label>
-          <input type="password" class="form-control" id="re-password" placeholder="再次输入" autocomplete="off">
+          <input type="password" class="form-control" id="re-password" placeholder="*再次输入" autocomplete="off">
         </div>
+        <div class="form-group"> </div>
+        
+        <div class="form-group">
+          <label for="name" class="sr-only">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="*真实姓名" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="tel" class="sr-only">tel</label>
+          <input type="tel" class="form-control" id="tel" placeholder="*电话" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="userid" class="sr-only">userid</label>
+          <input type="tel" class="form-control" id="userid" placeholder="*身份证号" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="licese" class="sr-only">licese</label>
+          <input type="tel" class="form-control" id="licese" placeholder="*驾驶证号" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="age" class="sr-only">age</label>
+          <input type="tel" class="form-control" id="age" placeholder="年龄" autocomplete="off">
+        </div>
+
         <div class="form-group"> </div>
         <div class="form-group">
           <p>已经注册? &nbsp; &nbsp;&nbsp; &nbsp; <a href="index.html">登录</a></p>
         </div>
         <div class="form-group">
-          <input type="submit" value="注册" class="btn btn-primary">
+          <input type="submit" onclick="signup()" value="注册" class="btn btn-primary">
         </div>
       </form>
       <!-- END Sign In Form --> 
-      <div id="leftdev"></div>
+      
     </div>
   </div>
   <div class="row" style="padding-top: 60px; clear: both;">
