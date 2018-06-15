@@ -33,7 +33,7 @@ function signup(){
     var matchResult=true;  
 
 
-    if(userName==""||pwd==""||repwd==""||name==""||tel==""||userid==""||licese==""){  
+    if(userName==""||pwd==""||repwd==""||name==""||tel==""||userid==""||licese==""||age==""){  
           alert("请确认是否有空缺项！");  
           matchResult=false;  
     }else if(userName.length<3||userName.length>20){  

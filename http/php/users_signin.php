@@ -1,6 +1,5 @@
 <?php
     //登录各种检测
-
     $username = $_POST['username']; //trim可以去头尾空格
     $password = $_POST['password'];
 
@@ -26,7 +25,7 @@
 
         // echo '链接成功！';
 
-        $sql = "select * from users_login where username = '" .$username. " ' and upassword = '".$password ."'";
+        $sql = "select * from users_login where username = '" .$username. "' and upassword = '".$password ."'";
 
         //查询数据库
         $retval = mysqli_query( $conn, $sql );
@@ -47,6 +46,8 @@
         {  
             echo "<script>alert('用户名或密码不正确！');history.go(-1);</script>";  
         }  
+
+        mysqli_close($conn); //关闭链接
 
     }
 ?>
