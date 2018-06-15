@@ -25,19 +25,8 @@
     }
     else
     {
-        //链接数据库
-        $conn = mysqli_connect(localhost , 'rental' , '66778899');
-        if(! $conn )
-        {
-            die('连接失败: ' . mysqli_error($conn));
-        }
-        // 设置编码，防止中文乱码
-        mysqli_query($conn , "set names utf8");
-
-        //选择数据库
-        mysqli_select_db( $conn, 'car_rental');
-
-        // echo '链接成功！';
+        //连接数据库
+        include "conn_db.php";
 
         //查询是否有这个用户名
         $sql = "select * from users_login where username = '" .$username."'";

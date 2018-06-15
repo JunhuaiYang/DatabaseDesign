@@ -11,19 +11,8 @@
     }
     else
     {
-        //链接数据库
-        $conn = mysqli_connect(localhost , 'rental' , '66778899');
-        if(! $conn )
-        {
-            die('连接失败: ' . mysqli_error($conn));
-        }
-        // 设置编码，防止中文乱码
-        mysqli_query($conn , "set names utf8");
-
-        //选择数据库
-        mysqli_select_db( $conn, 'car_rental');
-
-        // echo '链接成功！';
+        //连接数据库
+        include "conn_db.php";
 
         $sql = "select * from admin_login where ausername = '" .$username. "' and apassword = '".$password ."'";
 
@@ -44,7 +33,7 @@
             $_SESSION['login'] = 'true';
             $_SESSION['user'] = $username;
             // 自动跳转
-            echo '<meta http-equiv="refresh" content="1;url=../admin/admin.html">'; 
+            echo '<meta http-equiv="refresh" content="1;url=../admin/admin.php">'; 
         }  
         else 
         {  
