@@ -25,7 +25,7 @@
 
         // echo '链接成功！';
 
-        $sql = "select * from users_login where username = '" .$username. "' and upassword = '".$password ."'";
+        $sql = "select * from admin_login where ausername = '" .$username. "' and apassword = '".$password ."'";
 
         //查询数据库
         $retval = mysqli_query( $conn, $sql );
@@ -44,7 +44,7 @@
             $_SESSION['login'] = 'true';
             $_SESSION['user'] = $username;
             // 自动跳转
-            echo '<meta http-equiv="refresh" content="1;url=../users.html">'; 
+            echo '<meta http-equiv="refresh" content="1;url=../admin/admin.html">'; 
         }  
         else 
         {  

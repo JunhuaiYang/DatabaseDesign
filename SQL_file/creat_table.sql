@@ -41,11 +41,10 @@ create table admin(
     );
     
 create table admin_login(
-	aid int(5),
 	ausername varchar(20) not null,
 	apassword varchar(20) not null,
-    primary key(aid),
-    foreign key(aid) references admin(aid)
+    primary key(ausername)
+    -- foreign key(ausername) references admin(ausername)
     );
     
 create table car_rent(
