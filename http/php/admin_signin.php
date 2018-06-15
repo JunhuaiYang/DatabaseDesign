@@ -28,6 +28,7 @@
         if($num)  //找到的话
         {  
             echo '<h2>登录成功！</h2>' ;
+            
             //设置SESSION变量
             session_start();
             $_SESSION['login'] = 'true';

@@ -5,105 +5,112 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>用户注册</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="租车系统用户注册" />
-<meta name="keywords" content="注册" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>用户注册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="租车系统用户注册" />
+  <meta name="keywords" content="注册" />
 
 
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" href="favicon.ico">
-<link rel='stylesheet' href="css/google.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/style.css">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel='stylesheet' href="css/google.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/style.css">
 
-<!-- Modernizr JS -->
-<script src="js/modernizr-2.6.2.min.js"></script>
-<!-- FOR IE9 below -->
-<!--[if lt IE 9]>
+  <!-- Modernizr JS -->
+  <script src="js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
   <![endif]-->
 
   <!-- myjs -->
-<script src="js/myjs/signin.js"></script>
+  <script src="js/myjs/signin.js"></script>
 
 </head>
+
 <body class="style-3">
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-push-8"> 
-      
-      <!-- Start Sign In Form -->
-      <form method="post" action="php/users_signup.php" class="fh5co-form animate-box" data-animate-effect="fadeInRight">
-        <h2>用户注册</h2>
-        <div class="form-group"> </div>
-        <div class="form-group">
-          <label for="username" class="sr-only">username</label>
-          <input type="text" class="form-control" name="username" id="username" placeholder="*用户名" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="password" class="sr-only">Password</label>
-          <input type="password" class="form-control" name="password" id="password" placeholder="*密码" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="re-password" class="sr-only">Re-type Password</label>
-          <input type="password" class="form-control" name="re-password" id="re-password" placeholder="*再次输入" autocomplete="off">
-        </div>
-        <div class="form-group"> </div>
-        
-        <div class="form-group">
-          <label for="name" class="sr-only">Name</label>
-          <input type="text" class="form-control" name="name" id="name" placeholder="*真实姓名" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="tel" class="sr-only">tel</label>
-          <input type="tel" class="form-control" name="tel" id="tel" placeholder="*电话" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="userid" class="sr-only">userid</label>
-          <input type="tel" class="form-control" name="userid" id="userid" placeholder="*身份证号" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="licese" class="sr-only">licese</label>
-          <input type="tel" class="form-control" name="licese" id="licese" placeholder="*驾驶证号" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="age" class="sr-only">age</label>
-          <input type="tel" class="form-control" name="age" id="age" placeholder="*年龄" autocomplete="off">
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
 
-        <div class="form-group"> </div>
-        <div class="form-group">
-          <p>已经注册? &nbsp; &nbsp;&nbsp; &nbsp; <a href="index.html">登录</a></p>
-        </div>
-        <div class="form-group">
-          <input type="submit" onclick="return signup()" value="注册" class="btn btn-primary">
-        </div>
-      </form>
-      <!-- END Sign In Form --> 
-      
+        <!-- Start Sign In Form -->
+        <form method="post" action="php/users_signup.php" class="fh5co-form animate-box" data-animate-effect="fadeInRight">
+          <h2>用户注册</h2>
+          <div class="form-group"> </div>
+          <div class="form-group">
+            <label for="username" class="sr-only">username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="*用户名" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="*密码" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="re-password" class="sr-only">Re-type Password</label>
+            <input type="password" class="form-control" name="re-password" id="re-password" placeholder="*再次输入" autocomplete="off">
+          </div>
+          <div class="form-group"> </div>
+
+          <div class="form-group">
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="*真实姓名" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="tel" class="sr-only">tel</label>
+            <input type="tel" class="form-control" name="tel" id="tel" placeholder="*电话" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="userid" class="sr-only">userid</label>
+            <input type="tel" class="form-control" name="userid" id="userid" placeholder="*身份证号" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="licese" class="sr-only">licese</label>
+            <input type="tel" class="form-control" name="licese" id="licese" placeholder="*驾驶证号" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="age" class="sr-only">age</label>
+            <input type="tel" class="form-control" name="age" id="age" placeholder="*年龄" autocomplete="off">
+          </div>
+
+          <div class="form-group"> </div>
+          <div class="form-group">
+            <p>已经注册? &nbsp; &nbsp;&nbsp; &nbsp;
+              <a href="index.html">登录</a>
+            </p>
+          </div>
+          <div class="form-group">
+            <input type="submit" onclick="return signup()" value="注册" class="btn btn-primary">
+          </div>
+        </form>
+        <!-- END Sign In Form -->
+
+      </div>
+    </div>
+    <div class="row" style="padding-top: 60px; clear: both;">
+      <div class="col-md-12 text-center">
+        <p>
+          <small>YangJunhuai &copy; All Rights Reserved. </small>
+        </p>
+      </div>
     </div>
   </div>
-  <div class="row" style="padding-top: 60px; clear: both;">
-    <div class="col-md-12 text-center">
-      <p><small>YangJunhuai &copy; All Rights Reserved. </small></p>
-    </div>
-  </div>
-</div>
 
-<!-- jQuery --> 
-<script src="js/jquery.min.js"></script> 
-<!-- Bootstrap --> 
-<script src="js/bootstrap.min.js"></script> 
-<!-- Placeholder --> 
-<script src="js/jquery.placeholder.min.js"></script> 
-<!-- Waypoints --> 
-<script src="js/jquery.waypoints.min.js"></script> 
-<!-- Main JS --> 
-<script src="js/main.js"></script>
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Placeholder -->
+  <script src="js/jquery.placeholder.min.js"></script>
+  <!-- Waypoints -->
+  <script src="js/jquery.waypoints.min.js"></script>
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
 </body>
+
 </html>
