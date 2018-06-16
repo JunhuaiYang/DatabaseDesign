@@ -129,7 +129,7 @@ $username = $_SESSION['user'];
         <!-- 资源管理模块 -->
         <div class="tab-pane" id="sour" role="tabpanel">
         <div class="check-div form-inline">
-            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加资源</button>
+            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加车辆</button>
           </div>
         <div class="data-div">
             <div class="row tableHeader"> 
@@ -322,8 +322,8 @@ $username = $_SESSION['user'];
                   </div>
               </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-green">保 存</button>
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">确 定</button>
+
               </div>
               </div>
             <!-- /.modal-content --> 
@@ -485,71 +485,36 @@ $username = $_SESSION['user'];
             <div class="modal-content">
                 <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">添加车辆</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">添加订单</h4>
               </div>
                 <div class="modal-body">
                 <div class="container-fluid">
                     <form class="form-horizontal">
                     <div class="form-group ">
-                        <label for="cid" class="col-xs-3 control-label">车牌号：</label>
+                        <label for="cid" class="col-xs-3 control-label">车辆ID：</label>
                         <div class="col-xs-8 ">
                         <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="cplant" class="col-xs-3 control-label">车辆品牌：</label>
+                        <label for="uid" class="col-xs-3 control-label">用户ID：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" id="cplant" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" id="uid" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="cbrand" class="col-xs-3 control-label">车辆型号：</label>
+                        <label for="deposit" class="col-xs-3 control-label">押金：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cbrand" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" id="deposit" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
+                        <label for="oday" class="col-xs-3 control-label">预定天数：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="ccolor" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" id="oday" placeholder="">
                       </div>
                       </div>
-                    <div class="form-group">
-                        <label for="cvolume" class="col-xs-3 control-label">排量：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cvolume" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cdate" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="coil" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cstate" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="crent" class="col-xs-3 control-label">每日租金：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="crent" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cnote" placeholder="">
-                      </div>
-                      </div>
+                    
                   </form>
                   </div>
               </div>
@@ -1020,18 +985,6 @@ $username = $_SESSION['user'];
           </div>
         </div>
         
-        <!--弹出窗口 添加资源-->        <!-- /.modal --> 
-        <!--查看车辆资源弹出窗口-->
-        
-        <!-- /.modal --> 
-        
-        <!--修改资源弹出窗口-->
-        
-        <!-- /.modal --> 
-        
-        <!--弹出删除资源警告窗口-->
-        
-        <!-- /.modal --> 
       </div>
 		
 		        <!-- 财务报表--月 -->
@@ -1060,12 +1013,7 @@ $username = $_SESSION['user'];
               </div>
           </div>
         </div>
-<!--弹出窗口 添加资源-->        <!-- /.modal --> 
-        <!--查看车辆资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--修改资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--弹出删除资源警告窗口-->        <!-- /.modal --> 
+
       </div>
 		
 		        <!-- 财务报表--季度 -->
@@ -1094,12 +1042,7 @@ $username = $_SESSION['user'];
               </div>
           </div>
         </div>
-<!--弹出窗口 添加资源-->        <!-- /.modal --> 
-        <!--查看车辆资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--修改资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--弹出删除资源警告窗口-->        <!-- /.modal --> 
+
       </div>
 		
 		        <!-- 财务报表--年 -->
@@ -1128,12 +1071,7 @@ $username = $_SESSION['user'];
               </div>
           </div>
         </div>
-<!--弹出窗口 添加资源-->        <!-- /.modal --> 
-        <!--查看车辆资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--修改资源弹出窗口-->        <!-- /.modal --> 
-        
-        <!--弹出删除资源警告窗口-->        <!-- /.modal --> 
+
       </div>
 		
       </div>
