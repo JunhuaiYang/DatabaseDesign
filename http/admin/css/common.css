@@ -12,7 +12,7 @@ body {
 #wrap {
 	min-width: 100%;
 	position: absolute;
-	background: #eff3f6 bottom;
+	background: #DBE7E7 bottom;
 	min-height: 100%;
 	overflow: hidden;
 }
@@ -37,7 +37,7 @@ body {
 	box-sizing: border-box;
 	width: 200px;
 	height: 100%;
-	background: #4d5e70 bottom;
+	background: #082E2C bottom;
 }
 .leftMeun >div {
 	padding-left: 20px;
@@ -62,7 +62,7 @@ body {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	height: 70px;
-	background-color: #354457;
+	background-color: #216368;
 	font-size: 17px;
 	color: #fff;
 	vertical-align: bottom;

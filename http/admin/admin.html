@@ -78,7 +78,7 @@ $username = $_SESSION['user'];
     <!-- 左侧菜单栏目块 -->
     <div class="leftMeun" id="leftMeun">
     <div id="logoDiv">
-        <p id="logoP"> <img id="logo" alt="左右结构项目" src="images/logo.png"> <span>租车系统后台</span> </p>
+        <p id="logoP"> <img id="logo" alt="左右结构项目" src="images/timg.jpg"> <span>租车系统后台</span> </p>
       </div>
     <div id="personInfor">
         <p id="userName">杨钧淮</p>
