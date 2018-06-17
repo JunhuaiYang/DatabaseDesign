@@ -1,5 +1,4 @@
 <!doctype html>
-<!--
 <?php
   //连接数据库
 include "../php/conn_db.php";
@@ -12,8 +11,20 @@ if (empty($_SESSION['login'])) {
 }
   //获得用户名
 $username = $_SESSION['user'];
+
+
+//获得职位
+$sql_ad = "select * from admin where ausername = '" . $username . "'";
+//查询数据库
+$retval = mysqli_query($conn, $sql_ad);
+if (!$retval) {
+  die('无法读取数据: ' . mysqli_error($conn));
+}
+//取得结果
+$row = mysqli_fetch_array($retval, MYSQLI_ASSOC);
+$position = $row['aposition'];
+
 ?>
--->
 
 <html lang="ch">
   <head>
@@ -86,19 +97,15 @@ $username = $_SESSION['user'];
         <small>YangJunhuai<br> &copy; All Rights Reserved. </small>
 		<p><br></p>
         <p> <span>当前登录用户： 
-        <!--
             <?php
-              echo $username;
+            echo $username;
             ?>
---> 
 			</span>
       </p>
 		<p> <span>职位： 
-        <!--
             <?php
-              echo $username;
+            echo $position;
             ?>
---> 
 			</span>
       </p>
         <p> <a href="../php/admin_signout.php">退出登录</a> </p>
@@ -158,6 +165,8 @@ $username = $_SESSION['user'];
                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
               </div>
               </div>
+
+              
           </div>
           </div>
 			
