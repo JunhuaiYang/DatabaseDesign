@@ -37,6 +37,8 @@ $position = $row['aposition'];
   <title>租车系统-后台管理</title>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/myjs/main_check.js"></script>
   <script>
     $(function () {
       $(".meun-item").click(function () {
@@ -89,11 +91,12 @@ $position = $row['aposition'];
     <!-- 左侧菜单栏目块 -->
     <div class="leftMeun" id="leftMeun">
     <div id="logoDiv">
-        <p id="logoP"> <img id="logo" alt="左右结构项目" src="images/timg.jpg"> <span>租车系统后台</span> </p>
+        <p id="logoP"> <img id="logo" alt="租车系统后台" src="images/timg.jpg"> <span>租车系统后台</span> </p>
       </div>
     <div id="personInfor">
         <p id="userName">杨钧淮</p>
         <p> <span>yangjunhuai@qq.com</span> </p>
+        <p> <span>项目地址：<a href="https://github.com/JunhuaiYang/DatabaseDesign"><img id="logo" src="images/github.jpeg" alt="github"></a></span> </p>
         <small>YangJunhuai<br> &copy; All Rights Reserved. </small>
 		<p><br></p>
         <p> <span>当前登录用户： 
@@ -141,32 +144,61 @@ $position = $row['aposition'];
         <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 车辆编号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车牌号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆型号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 每日租金 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆状态 </div>
+            <div class="col-xs-1 "> 车辆编号 </div>
+            <div class="col-xs-2"> 车牌号 </div>
+            <div class="col-xs-1"> 品牌 </div>
+            <div class="col-xs-2"> 车辆型号 </div>
+            <div class="col-xs-1"> 每日租金 </div>
+            <div class="col-xs-2"> 车辆状态 </div>
             <!--3个宽度来操作-->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-1 "> 1 </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> 13688889999 </div>
-                <div class="col-xs-2"> 875 </div>
-                <!--					按钮-->
-                <div class="col-xs-3">
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewSource">查看详细</button>
-                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-              </div>
-              </div>
+            <!-- 通过模板输出-->
+            
+            <?php
+            require 'smarty/libs/Smarty.class.php';
 
-              
+            //申明对象
+            class car_show
+            {
+              public $cplant ;
+              public $cbrand ;
+              public $cmodel ;
+              public $cstate ;
+              public $crent ;
+              public $cid ;
+            }
+
+            $smarty_new_car = new Smarty();
+
+            //数据库操作
+            $sarch_car = "SELECT * FROM car_rental.car";
+
+            $retval = mysqli_query( $conn, $sarch_car );
+            if(! $retval )
+            {
+                die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            $temp = new car_show();
+
+            //模板  
+            while($row = mysqli_fetch_assoc($retval))
+            {
+              $temp->cid = $row['cid'];
+              $temp->cplant = $row['cplant'];
+              $temp->cbrand = $row['cbrand'];
+              $temp->cmodel = $row['cmodel'];
+              $temp->cstatus = $row['cstatus'];
+              $temp->crent = $row['crent'];
+
+              $smarty_new_car->assign('temp', $temp);
+              $smarty_new_car->display('car_row.tpl');
+            }
+            ?>
           </div>
           </div>
 			
@@ -182,73 +214,77 @@ $position = $row['aposition'];
               </div>
                 <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="form-horizontal">
+
+
+                    <form method="post" action="../php/new_car.php" target="_top" class="form-horizontal" >
                     <div class="form-group ">
-                        <label for="cid" class="col-xs-3 control-label">车牌号：</label>
+                        <label for="cplant" class="col-xs-3 control-label">*车牌号：</label>
                         <div class="col-xs-8 ">
-                        <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cplant" id="cplant" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="cplant" class="col-xs-3 control-label">车辆品牌：</label>
+                        <label for="cbrand" class="col-xs-3 control-label">*车辆品牌：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" id="cplant" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cbrand" id="cbrand" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="cbrand" class="col-xs-3 control-label">车辆型号：</label>
+                        <label for="cmodel" class="col-xs-3 control-label">*车辆型号：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cbrand" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cmodel" id="cmodel" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="ccolor" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="ccolor" id="ccolor" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cvolume" class="col-xs-3 control-label">排量：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cvolume" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cvolume" id="cvolume" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cdate" placeholder="">
+                        <input type="date" class="form-control input-sm duiqi" name="cdate" id="cdate" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="coil" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="coil" id="coil" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
+                        <label for="cstate" class="col-xs-3 control-label">*车辆状况：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cstate" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cstate" id="cstate" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="crent" class="col-xs-3 control-label">每日租金：</label>
+                        <label for="crent" class="col-xs-3 control-label">*每日租金：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="crent" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="crent" id="crent" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="cnote" placeholder="">
+                        <input type="" class="form-control input-sm duiqi"name="cnote" id="cnote" placeholder="">
                       </div>
                       </div>
+
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                  <button type="submit" onclick="return new_car()" class="btn btn-xs btn-xs btn-green"  >保 存</button>
+                  </div>
+
                   </form>
                   </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
               </div>
               </div>
             <!-- /.modal-content --> 
