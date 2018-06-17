@@ -1,3 +1,5 @@
+<!doctype html>
+<!--
 <?php
   //连接数据库
 include "../php/conn_db.php";
@@ -11,13 +13,10 @@ if (empty($_SESSION['login'])) {
   //获得用户名
 $username = $_SESSION['user'];
 ?>
-
-
-<!doctype html>
+-->
 
 <html lang="ch">
-
-<head>
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="数据库课程设计-租车系统">
@@ -72,627 +71,1127 @@ $username = $_SESSION['user'];
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/flat-ui.min.css" />
   <link rel="stylesheet" type="text/css" href="css/jquery.nouislider.css">
-</head>
+  </head>
 
-
-<body>
-  <div id="wrap">
+  <body>
+<div id="wrap"> 
     <!-- 左侧菜单栏目块 -->
     <div class="leftMeun" id="leftMeun">
-      <div id="logoDiv">
-        <p id="logoP">
-          <img id="logo" alt="左右结构项目" src="images/logo.png">
-          <span>租车系统后台</span>
-        </p>
+    <div id="logoDiv">
+        <p id="logoP"> <img id="logo" alt="左右结构项目" src="images/logo.png"> <span>租车系统后台</span> </p>
       </div>
-      <div id="personInfor">
+    <div id="personInfor">
         <p id="userName">杨钧淮</p>
-        <p>
-          <span>yangjunhuai@qq.com</span>
-        </p>
-        <p>
-          <small>YangJunhuai&copy; All Rights Reserved. </small>
-          <p>
-            当前登录用户：
+        <p> <span>yangjunhuai@qq.com</span> </p>
+        <small>YangJunhuai<br> &copy; All Rights Reserved. </small>
+		<p><br></p>
+        <p> <span>当前登录用户： 
+        <!--
             <?php
               echo $username;
             ?>
-          </p>
-          <p>
-            <a href="../php/admin_signout.php">退出登录</a>
-          </p>
+--> 
+			</span>
+      </p>
+		<p> <span>职位： 
+        <!--
+            <?php
+              echo $username;
+            ?>
+--> 
+			</span>
+      </p>
+        <p> <a href="../php/admin_signout.php">退出登录</a> </p>
       </div>
-      <div class="meun-title">
-        <strong>租车系统管理</strong>
-      </div>
-      <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab">
-        <img src="images/icon_source.png">车辆管理</div>
-      <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab">
-        <img src="images/icon_user_grey.png">用户管理</div>
-      <div class="meun-title">
-        <strong>信息</strong>
-      </div>
-    </div>
+    <div class="meun-title"> <strong>租车系统管理</strong> </div>
+    <div class="meun-item" aria-controls="sour" role="tab" href="#sour" data-toggle="tab"> <img src="../images/icon_change.png">车辆管理</div>
+    <div class="meun-item" href="#order" aria-controls="order" role="tab" data-toggle="tab"> <img src="../images/icon_user_grey.png">订单信息</div>
+		
+    <div class="meun-title"> <strong>用户</strong> </div>
+    <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"> <img src="../images/icon_chara_grey.png">用户管理</div>
+		
+    <div class="meun-title"> <strong>信息</strong> </div>
+    <div class="meun-item" href="#isfixed" aria-controls="isfixed" role="tab" data-toggle="tab"> <img src="../images/icon_rule_grey.png">维修信息</div>
+		
+    <div class="meun-title"> <strong>财务报表</strong> </div>
+    <div class="meun-item " href="#form_day" aria-controls="form_day" role="tab" data-toggle="tab"> <img src="images/icon_source.png">财务报表--日</div>
+    <div class="meun-item " href="#form_month" aria-controls="form_month" role="tab" data-toggle="tab"> <img src="images/icon_source.png">财务报表--月</div>
+    <div class="meun-item" href="#form_season" aria-controls="form_season" role="tab" data-toggle="tab"> <img src="images/icon_source.png">财务报表--季度</div>
+    <div class="meun-item" href="#form_year" aria-controls="form_year" role="tab" data-toggle="tab"> <img src="images/icon_source.png">财务报表--年</div>
+  </div>
+    
     <!-- 右侧具体内容栏目 -->
-    <div id="rightContent">
-      <a class="toggle-btn" id="nimei">
-        <i class="glyphicon glyphicon-align-justify"></i>
-      </a>
-      <!-- Tab panes -->
-      <div class="tab-content">
+    <div id="rightContent"> <a class="toggle-btn" id="nimei"> <i class="glyphicon glyphicon-align-justify"></i> </a> 
+    <!-- Tab panes -->
+    <div class="tab-content"> 
+		
+		
         <!-- 资源管理模块 -->
-        <div role="tabpanel" class="tab-pane active" id="sour">
-          <div class="check-div form-inline">
-            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加资源</button>
+        <div class="tab-pane" id="sour" role="tabpanel">
+        <div class="check-div form-inline">
+            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加车辆</button>
           </div>
-          <div class="data-div">
-            <div class="row tableHeader">
-              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 编码 </div>
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 名称 </div>
-              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> 链接 </div>
-              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 操作 </div>
-            </div>
-            <div class="tablebody">
-              <div class="row">
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> 1 </div>
-                <div id="topAD" class="col-lg-4 col-md-4 col-sm-4 col-xs-4" role="button" data-toggle="collapse" data-parent="#accordion"
-                  href="#collapseSystem" aria-expanded="true" aria-controls="collapseOne">
-                  <span id="topA" class="glyphicon  glyphicon-triangle-bottom  "></span>
-                  <span>系统管理</span>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                  <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                </div>
-              </div>
-
-              <!--系统管理折叠狂-->
-
-              <div id="collapseSystem" class="collapse in" aria-expanded="true">
-                <div class="row">
-                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl2 "> 2 </div>
-                  <div id="topBD" onClick="changeA()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 levl2" role="button" data-toggle="collapse"
-                    data-parent="#accordion" href="#collapseAccount" aria-expanded="true" aria-controls="collapseOne">
-                    <span onClick="changeB()" id="topB" class="glyphicon glyphicon-triangle-bottom"></span>
-                    <span>账号管理</span>
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /rlist/ </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                  </div>
-                </div>
-                <!--用户管理折叠狂-->
-                <div id="collapseAccount" class="collapse in" aria-expanded="true">
-                  <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3 "> 1 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3">
-                      <span class=""> &nbsp;</span>
-                      <span>资源管理</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  levl3 "> 2 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3">
-                      <span></span>
-                      <span>权限管理</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl2 "> 3 </div>
-                  <div id="topCD" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 levl2" role="button" data-toggle="collapse" data-parent="#accordion"
-                    href="#collapseSchool" aria-expanded="true" aria-controls="collapseOne">
-                    <span id="topC" onClick="changeC()" class="glyphicon glyphicon-triangle-bottom"></span>
-                    <span> 地区管理</span>
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                  </div>
-                </div>
-                <!--地区管理折叠狂-->
-                <div id="collapseSchool" class="collapse in" aria-expanded="true">
-                  <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  levl3"> 1 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4   levl3">
-                      <span></span>
-                      <span>地区管理</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3"> 2 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3">
-                      <span></span>
-                      <span>规则管理</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <button class="btn btn-success btn-xs " data-toggle="modal " data-target="#changeSource ">修改</button>
-                      <button class="btn btn-danger btn-xs " data-toggle="modal " data-target="#deleteSource ">删除</button>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3 "> 3 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 levl3">
-                      <span></span>
-                      <span>人员信息</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                      <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1   levl3"> 4 </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  levl3">
-                      <span></span>
-                      <span>座位管理</span>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> /admin/system/userlist/software/ </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-                      <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 车辆编号 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车牌号 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆型号 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 每日租金 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆状态 </div>
+            <!--3个宽度来操作-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
           </div>
-          <!--页码块-->
-          <footer class="footer">
-            <ul class="pagination">
-              <li>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-                页 </li>
-              <li class="gray"> 共20页 </li>
-              <li>
-                <i class="glyphicon glyphicon-menu-left"> </i>
-              </li>
-              <li>
-                <i class="glyphicon glyphicon-menu-right"> </i>
-              </li>
-            </ul>
-          </footer>
-          <!--弹出窗口 添加资源-->
-          <div class="modal fade" id="addSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-1 "> 1 </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> 13688889999 </div>
+                <div class="col-xs-2"> 875 </div>
+                <!--					按钮-->
+                <div class="col-xs-3">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewSource">查看详细</button>
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
+              </div>
+              </div>
+          </div>
+          </div>
+			
+			
+        
+        <!--弹出窗口 添加资源-->
+        <div class="modal fade" id="addSource" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">添加资源</h4>
-                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">添加车辆</h4>
+              </div>
                 <div class="modal-body">
-                  <div class="container-fluid">
+                <div class="container-fluid">
                     <form class="form-horizontal">
-                      <div class="form-group ">
-                        <label for="sName" class="col-xs-3 control-label">名称：</label>
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-3 control-label">车牌号：</label>
                         <div class="col-xs-8 ">
-                          <input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-                        </div>
+                        <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
                       </div>
-                      <div class="form-group">
-                        <label for="sLink" class="col-xs-3 control-label">链接：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cplant" class="col-xs-3 control-label">车辆品牌：</label>
                         <div class="col-xs-8 ">
-                          <input type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
-                        </div>
+                        <input type="" class="form-control input-sm duiqi" id="cplant" placeholder="">
                       </div>
-                      <div class="form-group">
-                        <label for="sOrd" class="col-xs-3 control-label">排序：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cbrand" class="col-xs-3 control-label">车辆型号：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sOrd" placeholder="">
-                        </div>
+                        <input type="" class="form-control input-sm duiqi" id="cbrand" placeholder="">
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">父节点：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
+                        <input type="" class="form-control input-sm duiqi" id="ccolor" placeholder="">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInput1" class="col-xs-3 control-label">资源类型：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cvolume" class="col-xs-3 control-label">排量：</label>
                         <div class="col-xs-8">
-                          <label class="control-label" for="anniu">
-                            <input type="radio" name="leixing" id="anniu"> 菜单
-                          </label>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <label class="control-label" for="meun">
-                            <input type="radio" name="leixing" id="meun"> 按钮
-                          </label>
-                        </div>
+                        <input type="" class="form-control input-sm duiqi" id="cvolume" placeholder="">
                       </div>
-                    </form>
+                      </div>
+                    <div class="form-group">
+                        <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cdate" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="coil" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cstate" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="crent" class="col-xs-3 control-label">每日租金：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="crent" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cnote" placeholder="">
+                      </div>
+                      </div>
+                  </form>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
-                </div>
               </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
           </div>
-          <!-- /.modal -->
-
-          <!--修改资源弹出窗口-->
-          <div class="modal fade" id="changeSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        <!--查看车辆资源弹出窗口-->
+        <div class="modal fade" id="viewSource" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">修改资源</h4>
-                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">修改车辆信息</h4>
+              </div>
                 <div class="modal-body">
-                  <div class="container-fluid">
+                <div class="container-fluid">
                     <form class="form-horizontal">
-                      <div class="form-group ">
-                        <label for="sName" class="col-xs-3 control-label">名称：</label>
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-3 control-label">车牌号：</label>
                         <div class="col-xs-8 ">
-                          <input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sLink" class="col-xs-3 control-label">链接：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cplant" class="col-xs-3 control-label">车辆品牌：</label>
                         <div class="col-xs-8 ">
-                          <input type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sOrd" class="col-xs-3 control-label">排序：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cbrand" class="col-xs-3 control-label">车辆型号：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sOrd" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">父节点：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInput1" class="col-xs-3 control-label">资源类型：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cvolume" class="col-xs-3 control-label">排量：</label>
                         <div class="col-xs-8">
-                          <label class="control-label" for="anniu">
-                            <input type="radio" name="leixing" id="anniu"> 菜单
-                          </label>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <label class="control-label" for="meun">
-                            <input type="radio" name="leixing" id="meun"> 按钮
-                          </label>
-                        </div>
+                        <label>xxx</label>
                       </div>
-                    </form>
+                      </div>
+                    <div class="form-group">
+                        <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
+                        <div class="col-xs-8">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
+                        <div class="col-xs-8">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
+                        <div class="col-xs-8">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="crent" class="col-xs-3 control-label">每日租金：</label>
+                        <div class="col-xs-8">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
+                        <div class="col-xs-8">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                  </form>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn btn-xs btn-green">保 存</button>
-                </div>
               </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
-          <!--弹出删除资源警告窗口-->
-          <div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="container-fluid"> 确定要删除该资源？删除后不可恢复！ </div>
-                </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
-        </div>
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">确 定</button>
 
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
+		
+			
+        <!--修改资源弹出窗口-->
+        <div class="modal fade" id="changeSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">修改车辆信息</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-3 control-label">车牌号：</label>
+                        <div class="col-xs-8 ">
+                        <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cplant" class="col-xs-3 control-label">车辆品牌：</label>
+                        <div class="col-xs-8 ">
+                        <input type="" class="form-control input-sm duiqi" id="cplant" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cbrand" class="col-xs-3 control-label">车辆型号：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cbrand" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="ccolor" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cvolume" class="col-xs-3 control-label">排量：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cvolume" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cdate" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="coil" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cstate" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="crent" class="col-xs-3 control-label">每日租金：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="crent" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="cnote" placeholder="">
+                      </div>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
+        <!--弹出删除资源警告窗口-->
+        <div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid"> 确定要删除该车辆？删除后不可恢复！ </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+      </div>
+        
+		
+		
+		        <!-- 订单信息 -->
+        <div class="tab-pane" id="order" role="tabpanel">
+        <div class="check-div form-inline">
+            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addOrder">添加订单</button>
+          </div>
+        <div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 订单编号 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 用户姓名 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆型号 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 押金 </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 订单状态 </div>
+            <!--3个宽度来操作-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-1 "> 1 </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> 13688889999 </div>
+                <div class="col-xs-2"> 875 </div>
+                <!--					按钮-->
+                <div class="col-xs-3">
+				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#sureSetout">确认租车</button>
+				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#sureSetin">确认还车</button>
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewOrder">查看详细</button>
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeOrder">修改</button>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteOrder">删除</button>
+              </div>
+              </div>
+          </div>
+          </div>
+        
+        <!--弹出窗口 添加订单-->
+        <div class="modal fade" id="addOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">添加订单</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-3 control-label">车辆ID：</label>
+                        <div class="col-xs-8 ">
+                        <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="uid" class="col-xs-3 control-label">用户ID：</label>
+                        <div class="col-xs-8 ">
+                        <input type="" class="form-control input-sm duiqi" id="uid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="deposit" class="col-xs-3 control-label">押金：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="deposit" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="oday" class="col-xs-3 control-label">预定天数：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="oday" placeholder="">
+                      </div>
+                      </div>
+                    
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+			
+			        <!--弹出窗口 确认租车-->
+        <div class="modal fade" id="sureSetout" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">确认租车</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="setout" class="col-xs-3 control-label">出车时间：</label>
+                        <div class="col-xs-8 ">
+                        <input type="date" class="form-control input-sm duiqi" id="cid" placeholder="">
+                      </div>
+                      </div>
+                
+                    
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+			
+			        <!--弹出窗口 确认还车-->
+        <div class="modal fade" id="sureSetin" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">确认还车</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="setin" class="col-xs-3 control-label">还车时间：</label>
+                        <div class="col-xs-8 ">
+                        <input type="date" class="form-control input-sm duiqi" id="setin" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="state" class="col-xs-3 control-label">车辆损坏情况：</label>
+                        <div class="col-xs-8 ">
+                        <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="deposit_back" class="col-xs-3 control-label">押金退还金额：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="fine" class="col-xs-3 control-label">交通违规罚款：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
+                      </div>
+                      </div>
+						 <div class="form-group">
+                        <label for="note" class="col-xs-3 control-label">备注：</label>
+                        <div class="col-xs-8">
+                        <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
+                      </div>
+                      </div>
+                    
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+			
+        <!-- /.modal --> 
+        <!--查看车辆资源弹出窗口-->
+        <div class="modal fade" id="viewOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">查看订单信息</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-4 control-label">合同号：</label>
+                        <div class="col-xs-7 ">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cplant" class="col-xs-4 control-label">车辆ID：</label>
+                        <div class="col-xs-7 ">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cbrand" class="col-xs-4 control-label">用户ID：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="ccolor" class="col-xs-4 control-label">经手人：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cvolume" class="col-xs-4 control-label">订单状态：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cdate" class="col-xs-4 control-label">押金：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="coil" class="col-xs-4 control-label">订单前金额：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cstate" class="col-xs-4 control-label">订单后金额：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="crent" class="col-xs-4 control-label">出车时间：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="cnote" class="col-xs-4 control-label">还车时间：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="cnote" class="col-xs-4 control-label">车辆损坏情况：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="cnote" class="col-xs-4 control-label">押金退还金额：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="cnote" class="col-xs-4 control-label">交通违规罚款：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="cnote" class="col-xs-4 control-label">备注信息：</label>
+                        <div class="col-xs-7">
+                        <label>xxx</label>
+                      </div>
+                      </div>
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
+        <!--修改资源弹出窗口-->
+        <div class="modal fade" id="changeOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">修改订单信息</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid"> 
+					<form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="cid" class="col-xs-4 control-label">车辆ID：</label>
+                        <div class="col-xs-7 ">
+                        <input type="" class="form-control input-sm duiqi" id="cid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="uid" class="col-xs-4 control-label">用户ID：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="uid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="aid" class="col-xs-4 control-label">经手人：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="aid" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="conditions" class="col-xs-4 control-label">订单状态：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="conditions" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="deposit" class="col-xs-4 control-label">押金：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="deposit" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="money_b" class="col-xs-4 control-label">订单前金额：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="money_b" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="money_a" class="col-xs-4 control-label">订单后金额：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="money_a" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="setout" class="col-xs-4 control-label">出车时间：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="setout" placeholder="">
+                      </div>
+                      </div>
+                    <div class="form-group">
+                        <label for="setin" class="col-xs-4 control-label">还车时间：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="setin" placeholder="">
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
+                      </div>
+                      </div>
+						<div class="form-group">
+                        <label for="note" class="col-xs-4 control-label">备注信息：</label>
+                        <div class="col-xs-7">
+                        <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
+                      </div>
+                      </div>
+                  </form></div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
+        <!--弹出删除资源警告窗口-->
+        <div class="modal fade" id="deleteOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid"> 确定要删除该订单？删除后不可恢复！ </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+      </div>
+		
+		
         <!--用户管理模块-->
         <div role="tabpanel" class="tab-pane" id="user">
-          <div class="check-div form-inline">
-            <div class="col-xs-3">
-              <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加用户 </button>
-            </div>
-            <div class="col-xs-4">
-              <input type="text" class="form-control input-sm" placeholder="输入文字搜索">
-              <button class="btn btn-white btn-xs ">查 询 </button>
-            </div>
-            <div class="col-lg-3 col-lg-offset-2 col-xs-4" style=" padding-right: 40px;text-align: right;">
-              <label for="paixu">排序:&nbsp;</label>
-              <select class=" form-control">
-                <option>地区</option>
-                <option>地区</option>
-                <option>班期</option>
-                <option>性别</option>
-                <option>年龄</option>
-                <option>份数</option>
-              </select>
-            </div>
+        <div class="check-div form-inline">
+
           </div>
-          <div class="data-div">
+        <div class="data-div">
             <div class="row tableHeader">
-              <div class="col-xs-2 "> 用户名 </div>
-              <div class="col-xs-2"> 地区 </div>
-              <div class="col-xs-2"> 真实姓名 </div>
-              <div class="col-xs-2"> 电话 </div>
-              <div class="col-xs-2"> 状态 </div>
-              <div class="col-xs-2"> 操作 </div>
-            </div>
-            <div class="tablebody">
-              <div class="row">
-                <div class="col-xs-2 "> goodmoning </div>
-                <div class="col-xs-2"> 国际关系地区 </div>
-                <div class="col-xs-2"> 李豆豆 </div>
-                <div class="col-xs-2"> 13688889999 </div>
-                <div class="col-xs-2"> 状态 </div>
-                <div class="col-xs-2">
-                  <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-                  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
-                </div>
-              </div>
-            </div>
+            <div class="col-xs-1 "> 编号 </div>
+            <div class="col-xs-2"> 用户名 </div>
+            <div class="col-xs-2"> 姓名 </div>
+            <div class="col-xs-2"> 电话 </div>
+            <div class="col-xs-1"> 是否会员 </div>
+				<div class="col-xs-1"> 信誉度 </div>
+            <div class="col-xs-3"> 操作 </div>
           </div>
-          <!--页码块-->
-          <footer class="footer">
-            <ul class="pagination">
-              <li>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-                页 </li>
-              <li class="gray"> 共20页 </li>
-              <li>
-                <i class="glyphicon glyphicon-menu-left"> </i>
-              </li>
-              <li>
-                <i class="glyphicon glyphicon-menu-right"> </i>
-              </li>
-            </ul>
-          </footer>
+            <div class="tablebody"> 
+            <!--				行-->
+            <div class="row">
+                <div class="col-xs-1 "> 1 </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> sdf </div>
 
-          <!--弹出添加用户窗口-->
-          <div class="modal fade" id="addUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <div class="col-xs-2"> 875 </div>
+				 <div class="col-xs-1"> 是 </div>
+				<div class="col-xs-1"> 是 </div>
+                <!--					按钮-->
+                <div class="col-xs-3">
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewUser">查看详细</button>
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改会员</button>
+				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#reviseUser">查看历史订单</button>
+              </div>
+              </div>
+          </div>
+          </div>
+			
+<!--			查看用户信息-->
+			<div class="modal fade" id="viewUser" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">添加用户</h4>
-                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">查看用户信息</h4>
+              </div>
                 <div class="modal-body">
-                  <div class="container-fluid">
+                <div class="container-fluid">
                     <form class="form-horizontal">
-                      <div class="form-group ">
-                        <label for="sName" class="col-xs-3 control-label">用户名：</label>
+                    <div class="form-group ">
+                        <label for="cid" class="col-xs-3 control-label">用户ID：</label>
                         <div class="col-xs-8 ">
-                          <input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sLink" class="col-xs-3 control-label">真实姓名：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cplant" class="col-xs-3 control-label">用户姓名：</label>
                         <div class="col-xs-8 ">
-                          <input type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sOrd" class="col-xs-3 control-label">电子邮箱：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cbrand" class="col-xs-3 control-label">身份证号：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sOrd" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">电话：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="ccolor" class="col-xs-3 control-label">联系电话：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">地区：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cvolume" class="col-xs-3 control-label">驾驶证号：</label>
                         <div class="col-xs-8">
-                          <select class=" form-control select-duiqi">
-                            <option value="">国际关系地区</option>
-                            <option value="">北京大学</option>
-                            <option value="">天津大学</option>
-                          </select>
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">权限：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="cdate" class="col-xs-3 control-label">年龄：</label>
                         <div class="col-xs-8">
-                          <select class=" form-control select-duiqi">
-                            <option value="">管理员</option>
-                            <option value="">普通用户</option>
-                            <option value="">游客</option>
-                          </select>
-                        </div>
+                        <label>xxx</label>
                       </div>
-                      <div class="form-group">
-                        <label for="situation" class="col-xs-3 control-label">状态：</label>
+                      </div>
+                    <div class="form-group">
+                        <label for="coil" class="col-xs-3 control-label">是否会员：</label>
                         <div class="col-xs-8">
-                          <label class="control-label" for="anniu">
-                            <input type="radio" name="situation" id="normal"> 正常
-                          </label>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <label class="control-label" for="meun">
-                            <input type="radio" name="situation" id="forbid"> 禁用
-                          </label>
-                        </div>
+                        <label>xxx</label>
                       </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn btn-xs btn-green">保 存</button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
+                      </div>
 
-          <!--弹出修改用户窗口-->
-          <div class="modal fade" id="reviseUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+                  </form>
+                  </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+                
+        <!--弹出修改用户窗口-->
+        <div class="modal fade" id="reviseUser" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
-                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
+              </div>
                 <div class="modal-body">
-                  <div class="container-fluid">
+                <div class="container-fluid">
                     <form class="form-horizontal">
-                      <div class="form-group ">
-                        <label for="sName" class="col-xs-3 control-label">用户名：</label>
-                        <div class="col-xs-8 ">
-                          <input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="sLink" class="col-xs-3 control-label">真实姓名：</label>
-                        <div class="col-xs-8 ">
-                          <input type="" class="form-control input-sm duiqi" id="sLink" placeholder="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="sOrd" class="col-xs-3 control-label">电子邮箱：</label>
+<div class="form-group">
+                      <label for="situation" class="col-xs-3 control-label">是否会员：</label>
                         <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sOrd" placeholder="">
-                        </div>
+                        <label class="control-label" for="anniu">
+                            <input type="radio" name="situation" id="normal">
+                            会员 </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="control-label" for="meun">
+                            <input type="radio" name="situation" id="forbid">
+                            非会员 </label>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">电话：</label>
-                        <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
                       </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">地区：</label>
-                        <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="sKnot" class="col-xs-3 control-label">权限：</label>
-                        <div class="col-xs-8">
-                          <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="situation" class="col-xs-3 control-label">状态：</label>
-                        <div class="col-xs-8">
-                          <label class="control-label" for="anniu">
-                            <input type="radio" name="situation" id="normal"> 正常
-                          </label>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <label class="control-label" for="meun">
-                            <input type="radio" name="situation" id="forbid"> 禁用
-                          </label>
-                        </div>
-                      </div>
-                    </form>
+                  </form>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn btn-xs btn-green">保 存</button>
-                </div>
               </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-green">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
           </div>
-          <!-- /.modal -->
-
-          <!--弹出删除用户警告窗口-->
-          <div class="modal fade" id="deleteUser" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
+        <!--弹出删除用户警告窗口-->
+        <div class="modal fade" id="deleteUser" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="container-fluid"> 确定要删除该用户？删除后不可恢复！ </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="button" class="btn  btn-xs btn-danger">保 存</button>
-                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
               </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
+                <div class="modal-body">
+                <div class="container-fluid"> 确定要删除该用户？删除后不可恢复！ </div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn  btn-xs btn-danger">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
           </div>
-          <!-- /.modal -->
-
-        </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+        
       </div>
-    </div>
+		
+		        <!-- 维修信息 -->
+        <div class="tab-pane" id="isfixed" role="tabpanel">
+        <div class="check-div form-inline">
+          </div>
+        <div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-xs-1 "> 编号 </div>
+			<div class="col-xs-1 "> 车辆编号 </div>
+            <div class="col-xs-2"> 车牌号 </div>
+            <div class="col-xs-2"> 车辆型号 </div>
+            <div class="col-xs-1"> 车辆状况 </div>
+            <div class="col-xs-4"> 备注 </div>
+
+            <div class="col-xs-1"> 操作 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-1 "> 1 </div>
+                <div class="col-xs-1"> sdf </div>
+                <div class="col-xs-2"> sdf </div>
+                <div class="col-xs-2"> 13688889999 </div>
+				<div class="col-xs-1"> sdf </div>
+                <div class="col-xs-4"> 875 </div>
+                <!--					按钮-->
+                <div class="col-xs-1">
+                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#hasFixed">已维修</button>
+              </div>
+              </div>
+          </div>
+          </div>
+
+        <!--弹出已维修窗口-->
+        <div class="modal fade" id="hasFixed" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+              </div>
+                <div class="modal-body">
+                <div class="container-fluid"> 确定已经对该车辆完成维修？</div>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+              </div>
+              </div>
+            <!-- /.modal-content --> 
+          </div>
+            <!-- /.modal-dialog --> 
+          </div>
+        <!-- /.modal --> 
+      </div>
+		
+		        <!-- 财务报表--日 -->
+      <div class="tab-pane" id="form_day" role="tabpanel">
+        <div class="check-div form-inline">
+        </div>
+        <div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-xs-2 "> 日期 </div>
+            <div class="col-xs-2"> 租金收入 </div>
+            <div class="col-xs-2"> 不退押金收入 </div>
+            <div class="col-xs-2"> 总收入 </div>
+            <div class="col-xs-4"> 累计收入 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-2 "> 2018 </div>
+            <div class="col-xs-2"> 56 </div>
+            <div class="col-xs-2"> 12 </div>
+            <div class="col-xs-2"> 456 </div>
+            <div class="col-xs-4"> 123 </div>
+              </div>
+          </div>
+        </div>
+        
+      </div>
+		
+		        <!-- 财务报表--月 -->
+        <div class="tab-pane" id="form_month" role="tabpanel">
+        <div class="check-div form-inline">
+          </div>
+			
+			<div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-xs-2 "> 日期 </div>
+            <div class="col-xs-2"> 租金收入 </div>
+            <div class="col-xs-2"> 不退押金收入 </div>
+            <div class="col-xs-2"> 总收入 </div>
+            <div class="col-xs-4"> 累计收入 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-2 "> 2018 </div>
+            <div class="col-xs-2"> 56 </div>
+            <div class="col-xs-2"> 12 </div>
+            <div class="col-xs-2"> 456 </div>
+            <div class="col-xs-4"> 123 </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+		
+		        <!-- 财务报表--季度 -->
+        <div class="tab-pane" id="form_season" role="tabpanel">
+        <div class="check-div form-inline">
+          </div>
+			
+			<div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-xs-2 "> 日期 </div>
+            <div class="col-xs-2"> 租金收入 </div>
+            <div class="col-xs-2"> 不退押金收入 </div>
+            <div class="col-xs-2"> 总收入 </div>
+            <div class="col-xs-4"> 累计收入 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-2 "> 2018 </div>
+            <div class="col-xs-2"> 56 </div>
+            <div class="col-xs-2"> 12 </div>
+            <div class="col-xs-2"> 456 </div>
+            <div class="col-xs-4"> 123 </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+		
+		        <!-- 财务报表--年 -->
+        <div class="tab-pane" id="form_year" role="tabpanel">
+        <div class="check-div form-inline">
+          </div>
+			
+			<div class="data-div">
+            <div class="row tableHeader"> 
+            <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
+            <div class="col-xs-2 "> 日期 </div>
+            <div class="col-xs-2"> 租金收入 </div>
+            <div class="col-xs-2"> 不退押金收入 </div>
+            <div class="col-xs-2"> 总收入 </div>
+            <div class="col-xs-4"> 累计收入 </div>
+          </div>
+            <div class="tablebody"> 
+            
+            <!-- 每一行-->
+            <div class="row">
+                <div class="col-xs-2 "> 2018 </div>
+            <div class="col-xs-2"> 56 </div>
+            <div class="col-xs-2"> 12 </div>
+            <div class="col-xs-2"> 456 </div>
+            <div class="col-xs-4"> 123 </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+		
+      </div>
   </div>
-
-  <script src="js/jquery.nouislider.js"></script>
+  </div>
+<script src="js/jquery.nouislider.js"></script>
+	  
 </body>
-
 </html>
