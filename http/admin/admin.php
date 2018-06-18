@@ -136,7 +136,7 @@ $position = $row['aposition'];
     <div class="tab-content"> 
 		
 		
-        <!-- 资源管理模块 -->
+        <!-- 车辆管理模块 -->
         <div class="tab-pane active" id="sour" role="tabpanel">
         <div class="check-div form-inline">
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加车辆</button>
@@ -155,12 +155,11 @@ $position = $row['aposition'];
           </div>
             <div class="tablebody"> 
             
-            <!-- 每一行-->
-            <!-- 通过模板输出-->
+            <!-- 每一行简略信息-->
+            <!-- 模板输出-->
             
             <?php
             require 'smarty/libs/Smarty.class.php';
-
             //申明对象
             class car_show
             {
@@ -200,6 +199,7 @@ $position = $row['aposition'];
           </div>
           </div>
 
+          <!-- 每一个弹窗-->
           <?php
             //各种弹出窗口处理
             class car_reset
@@ -341,7 +341,7 @@ $position = $row['aposition'];
         
 		
 		
-		        <!-- 订单信息 -->
+<!-- 订单信息 -->
         <div class="tab-pane" id="order" role="tabpanel">
         <div class="check-div form-inline">
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addOrder">添加订单</button>
@@ -349,32 +349,89 @@ $position = $row['aposition'];
         <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 订单编号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 用户姓名 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆型号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 押金 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 订单状态 </div>
+            <div class="col-xs-1 "> 订单编号 </div>
+            <div class="col-xs-1"> 用户姓名 </div>
+            <div class="col-xs-2"> 车牌号 </div>
+            <div class="col-xs-1"> 车辆品牌 </div>
+            <div class="col-xs-1"> 车辆型号 </div>
+            <div class="col-xs-2"> 经手人 </div>
+            <div class="col-xs-1"> 订单状态 </div>
             <!--3个宽度来操作-->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-1 "> 1 </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> 13688889999 </div>
-                <div class="col-xs-2"> 875 </div>
-                <!--					按钮-->
-                <div class="col-xs-3">
-				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#sureSetout">确认租车</button>
-				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#sureSetin">确认还车</button>
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewOrder">查看详细</button>
-                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeOrder">修改</button>
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteOrder">删除</button>
-              </div>
-              </div>
+            <?php
+              //生成每一行订单信息
+
+              class rental
+            {
+              public $contractid;
+              public $cid;
+              public $uid;
+              public $aid;
+              public $deposit;
+              public $money_b;
+              public $money_a;
+              public $setout;
+              public $setin;
+              public $cstate;
+              public $deposit_back;
+              public $fine;
+              public $note;
+              public $status;
+              public $plan_day;
+
+              public $uname;
+              public $cbrand;
+              public $cmodel;
+              public $cplant;
+              public $username;
+              public $aname;
+            }
+
+            $temp_rental = new rental();
+            $smarty_rental = new Smarty();
+
+            $sarch_rental = "select * from car_rent, car, users, admin
+            where car_rent.aid = admin.aid and car_rent.cid = car.cid and
+            car_rent.uid = users.uid";
+
+            $retval = mysqli_query($conn, $sarch_rental);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_rental->contractid  = $row['contractid'];
+              $temp_rental->cid  = $row['cid'];
+              $temp_rental->uid  = $row['uid'];
+              $temp_rental->aid  = $row['aid'];
+              $temp_rental->deposit  = $row['deposit'];
+              $temp_rental->money_b  = $row['money_b'];
+              $temp_rental->money_a  = $row['money_a'];
+              $temp_rental->setout = $row['setout'];
+              $temp_rental->setin  = $row['setin'];
+              $temp_rental->cstate  = $row['cstate'];
+              $temp_rental->deposit_back  = $row['deposit_back'];
+              $temp_rental->fine  = $row['fine'];
+              $temp_rental->note  = $row['note'];
+              $temp_rental->status  = $row['status'];
+              $temp_rental->plan_day  = $row['plan_day'];
+              $temp_rental->uname  = $row['uname'];
+              $temp_rental->cbrand  = $row['cbrand'];
+              $temp_rental->cmodel  = $row['cmodel'];
+              $temp_rental->cplant = $row['cplant'];
+              $temp_rental->username  = $row['username'];
+              $temp_rental->aname  = $row['aname'];
+
+              $smarty_rental->assign('temp', $temp_rental);
+              $smarty_rental->display('rental_row.tpl');
+            }
+
+            ?>
+
           </div>
           </div>
         
@@ -413,14 +470,16 @@ $position = $row['aposition'];
                         <input type="" class="form-control input-sm duiqi" id="oday" placeholder="">
                       </div>
                       </div>
+
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
+                  </div>
                     
                   </form>
                   </div>
               </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
-              </div>
+
               </div>
             <!-- /.modal-content --> 
           </div>
@@ -444,15 +503,16 @@ $position = $row['aposition'];
                         <input type="date" class="form-control input-sm duiqi" id="cid" placeholder="">
                       </div>
                       </div>
+                      <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
+                  </div>
                 
                     
                   </form>
                   </div>
               </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
-              </div>
+
               </div>
             <!-- /.modal-content --> 
           </div>
@@ -471,32 +531,32 @@ $position = $row['aposition'];
                 <div class="container-fluid">
                     <form class="form-horizontal">
                     <div class="form-group ">
-                        <label for="setin" class="col-xs-3 control-label">还车时间：</label>
-                        <div class="col-xs-8 ">
+                        <label for="setin" class="col-xs-4 control-label">还车时间：</label>
+                        <div class="col-xs-7 ">
                         <input type="date" class="form-control input-sm duiqi" id="setin" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="state" class="col-xs-3 control-label">车辆损坏情况：</label>
-                        <div class="col-xs-8 ">
+                        <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
+                        <div class="col-xs-7 ">
                         <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="deposit_back" class="col-xs-3 control-label">押金退还金额：</label>
-                        <div class="col-xs-8">
+                        <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
+                        <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="fine" class="col-xs-3 control-label">交通违规罚款：</label>
-                        <div class="col-xs-8">
+                        <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
+                        <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
                       </div>
                       </div>
-						 <div class="form-group">
-                        <label for="note" class="col-xs-3 control-label">备注：</label>
-                        <div class="col-xs-8">
+						       <div class="form-group">
+                        <label for="note" class="col-xs-4 control-label">备注：</label>
+                        <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
                       </div>
                       </div>
@@ -586,25 +646,25 @@ $position = $row['aposition'];
                         <label>xxx</label>
                       </div>
                       </div>
-						<div class="form-group">
+						        <div class="form-group">
                         <label for="cnote" class="col-xs-4 control-label">车辆损坏情况：</label>
                         <div class="col-xs-7">
                         <label>xxx</label>
                       </div>
                       </div>
-						<div class="form-group">
+						        <div class="form-group">
                         <label for="cnote" class="col-xs-4 control-label">押金退还金额：</label>
                         <div class="col-xs-7">
                         <label>xxx</label>
                       </div>
                       </div>
-						<div class="form-group">
+						        <div class="form-group">
                         <label for="cnote" class="col-xs-4 control-label">交通违规罚款：</label>
                         <div class="col-xs-7">
                         <label>xxx</label>
                       </div>
                       </div>
-						<div class="form-group">
+						        <div class="form-group">
                         <label for="cnote" class="col-xs-4 control-label">备注信息：</label>
                         <div class="col-xs-7">
                         <label>xxx</label>
@@ -614,8 +674,7 @@ $position = $row['aposition'];
                   </div>
               </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-green">保 存</button>
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">确 定</button>
               </div>
               </div>
             <!-- /.modal-content --> 
@@ -689,36 +748,38 @@ $position = $row['aposition'];
                         <input type="" class="form-control input-sm duiqi" id="setin" placeholder="">
                       </div>
                       </div>
-						<div class="form-group">
+						        <div class="form-group">
                         <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
                         <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
                       </div>
                       </div>
-						<div class="form-group">
+					        	<div class="form-group">
                         <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
                         <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
                       </div>
                       </div>
-						<div class="form-group">
+				        		<div class="form-group">
                         <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
                         <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
                       </div>
                       </div>
-						<div class="form-group">
+					        	<div class="form-group">
                         <label for="note" class="col-xs-4 control-label">备注信息：</label>
                         <div class="col-xs-7">
                         <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
                       </div>
                       </div>
-                  </form></div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-green">保 存</button>
+                </div>
+                  </form>
+                </div>
               </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-green">保 存</button>
-              </div>
+
               </div>
             <!-- /.modal-content --> 
           </div>
@@ -726,7 +787,7 @@ $position = $row['aposition'];
           </div>
         <!-- /.modal --> 
         
-        <!--弹出删除资源警告窗口-->
+        <!--弹出删除订单警告窗口-->
         <div class="modal fade" id="deleteOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -750,7 +811,7 @@ $position = $row['aposition'];
       </div>
 		
 		
-        <!--用户管理模块-->
+<!--用户管理模块-->
         <div role="tabpanel" class="tab-pane" id="user">
         <div class="check-div form-inline">
 
@@ -766,150 +827,87 @@ $position = $row['aposition'];
             <div class="col-xs-3"> 操作 </div>
           </div>
             <div class="tablebody"> 
-            <!--				行-->
-            <div class="row">
-                <div class="col-xs-1 "> 1 </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> sdf </div>
 
-                <div class="col-xs-2"> 875 </div>
-				 <div class="col-xs-1"> 是 </div>
-				<div class="col-xs-1"> 是 </div>
-                <!--					按钮-->
-                <div class="col-xs-3">
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewUser">查看详细</button>
-                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改会员</button>
-				<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#reviseUser">查看历史订单</button>
-              </div>
-              </div>
+            <?php
+              //生成用户行
+
+              //申明对象
+              class user_show
+              {
+                public $uid;
+                public $username;
+                public $uname;
+                public $utel;
+                public $isvip;
+                public $ucredit;
+
+                public $ulicese;
+                public $uage;
+                public $uidnum;
+              }
+
+              $smarty_user = new Smarty();
+
+              //数据库操作
+              $sarch_user = "SELECT * FROM car_rental.users";
+
+              $retval = mysqli_query($conn, $sarch_user);
+              if (!$retval) {
+                die('无法读取数据: ' . mysqli_error($conn));
+              }
+
+              $temp_users_row = new user_show();
+
+              //模板  
+              while ($row = mysqli_fetch_assoc($retval)) {
+                $temp_users_row->uid = $row['uid'];
+                $temp_users_row->username = $row['username'];
+                $temp_users_row->uname = $row['uname'];
+                $temp_users_row->utel = $row['utel'];
+                $temp_users_row->isvip = $row['isvip'];
+                $temp_users_row->ucredit = $row['ucredit'];
+
+                $smarty_user->assign('temp', $temp_users_row);
+                $smarty_user->display('user_row.tpl');
+              }
+
+            ?>
+
           </div>
           </div>
+
+          <?php
+            //生成各个弹窗
+            $smarty_user_edit = new Smarty();
+            $temp_users = new user_show();
+
+            //数据库操作
+            $sarch_user = "SELECT * FROM car_rental.users";
+            $retval = mysqli_query($conn, $sarch_user);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+            //模板  
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_users->uid = $row['uid'];
+              $temp_users->username = $row['username'];
+              $temp_users->uname = $row['uname'];
+              $temp_users->utel = $row['utel'];
+              $temp_users->isvip = $row['isvip'];
+              $temp_users->ucredit = $row['ucredit'];
+
+              $temp_users->ulicese = $row['ulicese'];
+              $temp_users->uage = $row['uage'];
+              $temp_users->uidnum = $row['uidnum'];
+
+              $smarty_user_edit->assign('temp', $temp_users);
+              $smarty_user_edit->display('user_edit.tpl');
+            }
+
+
+          ?>
 			
-<!--			查看用户信息-->
-			<div class="modal fade" id="viewUser" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">查看用户信息</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="form-horizontal">
-                    <div class="form-group ">
-                        <label for="cid" class="col-xs-3 control-label">用户ID：</label>
-                        <div class="col-xs-8 ">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cplant" class="col-xs-3 control-label">用户姓名：</label>
-                        <div class="col-xs-8 ">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cbrand" class="col-xs-3 control-label">身份证号：</label>
-                        <div class="col-xs-8">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="ccolor" class="col-xs-3 control-label">联系电话：</label>
-                        <div class="col-xs-8">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cvolume" class="col-xs-3 control-label">驾驶证号：</label>
-                        <div class="col-xs-8">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cdate" class="col-xs-3 control-label">年龄：</label>
-                        <div class="col-xs-8">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="coil" class="col-xs-3 control-label">是否会员：</label>
-                        <div class="col-xs-8">
-                        <label>xxx</label>
-                      </div>
-                      </div>
 
-                  </form>
-                  </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-green">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-                
-        <!--弹出修改用户窗口-->
-        <div class="modal fade" id="reviseUser" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">修改用户</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="form-horizontal">
-<div class="form-group">
-                      <label for="situation" class="col-xs-3 control-label">是否会员：</label>
-                        <div class="col-xs-8">
-                        <label class="control-label" for="anniu">
-                            <input type="radio" name="situation" id="normal">
-                            会员 </label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label class="control-label" for="meun">
-                            <input type="radio" name="situation" id="forbid">
-                            非会员 </label>
-                      </div>
-                      </div>
-                  </form>
-                  </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-green">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-        <!-- /.modal --> 
-        
-        <!--弹出删除用户警告窗口-->
-        <div class="modal fade" id="deleteUser" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid"> 确定要删除该用户？删除后不可恢复！ </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn  btn-xs btn-danger">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-        <!-- /.modal --> 
         
       </div>
 		

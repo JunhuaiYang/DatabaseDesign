@@ -7,8 +7,10 @@
     <div class="col-xs-2"> 
     {if $temp->cstatus eq '0'}
     <span class="label label-default">未出租</span> 
-    {else}
+    {elseif $temp->cstatus eq '1'}
     <span class="label label-warning">已出租</span> 
+    {else}
+    <span class="label label-danger">待维修</span> 
     {/if}    
     </div>
     <!--					按钮-->

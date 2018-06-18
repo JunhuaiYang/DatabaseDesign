@@ -44,17 +44,17 @@ function signup(){
     }else if(pwd!=repwd){  
           alert("密码和重复密码不同，请重新输入！");  
           return false
-    }else if(tel.length>11){  
-          alert("手机号码格式不正确！");  
+    }else if(tel.length==11){  
+          alert("手机号码格式不正确！长度为11");  
           return false
     }else if(name.length<2||name.length>6){  
         alert("真实姓名不正确！");  
         return false
     }else if(userid.length!=18){  
-        alert("身份证号不正确！");  
+        alert("身份证号不正确！长度为18");  
         return false
     }else if(licese.length!=12){  
-        alert("驾驶证证号不正确！");  
+        alert("驾驶证证号不正确！长度为12");  
         return false
     }else if(age!=""){  
         if(age<18 || age>70){

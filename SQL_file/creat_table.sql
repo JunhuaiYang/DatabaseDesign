@@ -67,6 +67,10 @@ create table car_rent(
     foreign key(uid) references users(uid),
     foreign key(aid) references admin(aid)
     );
+    
+select * from car_rent, car, users, admin
+where car_rent.aid = admin.aid and car_rent.cid = car.cid and
+car_rent.uid = users.uid;
 
 
 
