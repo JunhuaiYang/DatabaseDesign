@@ -372,7 +372,6 @@ $position = $row['aposition'];
               public $uid;
               public $aid;
               public $deposit;
-              public $money_b;
               public $money_a;
               public $setout;
               public $setin;
@@ -382,13 +381,15 @@ $position = $row['aposition'];
               public $note;
               public $status;
               public $plan_day;
-
+              public $real_day;
+              
               public $uname;
               public $cbrand;
               public $cmodel;
               public $cplant;
               public $username;
               public $aname;
+              public $uidnum;
             }
 
             $temp_rental = new rental();
@@ -409,7 +410,6 @@ $position = $row['aposition'];
               $temp_rental->uid  = $row['uid'];
               $temp_rental->aid  = $row['aid'];
               $temp_rental->deposit  = $row['deposit'];
-              $temp_rental->money_b  = $row['money_b'];
               $temp_rental->money_a  = $row['money_a'];
               $temp_rental->setout = $row['setout'];
               $temp_rental->setin  = $row['setin'];
@@ -425,6 +425,7 @@ $position = $row['aposition'];
               $temp_rental->cplant = $row['cplant'];
               $temp_rental->username  = $row['username'];
               $temp_rental->aname  = $row['aname'];
+              $temp_rental->uidnum  = $row['uidnum'];
 
               $smarty_rental->assign('temp', $temp_rental);
               $smarty_rental->display('rental_row.tpl');
@@ -434,6 +435,43 @@ $position = $row['aposition'];
 
           </div>
           </div>
+          
+           <!--生成各种弹窗-->
+           <?php
+             $retval = mysqli_query($conn, $sarch_rental);
+             if (!$retval) {
+               die('无法读取数据: ' . mysqli_error($conn));
+             }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_rental->contractid  = $row['contractid'];
+              $temp_rental->cid  = $row['cid'];
+              $temp_rental->uid  = $row['uid'];
+              $temp_rental->aid  = $row['aid'];
+              $temp_rental->deposit  = $row['deposit'];
+              $temp_rental->money_a  = $row['money_a'];
+              $temp_rental->setout = $row['setout'];
+              $temp_rental->setin  = $row['setin'];
+              $temp_rental->cstate  = $row['cstate'];
+              $temp_rental->deposit_back  = $row['deposit_back'];
+              $temp_rental->fine  = $row['fine'];
+              $temp_rental->note  = $row['note'];
+              $temp_rental->status  = $row['status'];
+              $temp_rental->plan_day  = $row['plan_day'];
+              $temp_rental->uname  = $row['uname'];
+              $temp_rental->cbrand  = $row['cbrand'];
+              $temp_rental->cmodel  = $row['cmodel'];
+              $temp_rental->cplant = $row['cplant'];
+              $temp_rental->username  = $row['username'];
+              $temp_rental->aname  = $row['aname'];
+              $temp_rental->real_day  = $row['real_day'];
+
+              $smarty_rental->assign('temp', $temp_rental);
+              $smarty_rental->display('rental_edit.tpl');
+            }
+
+           ?>
+
         
         <!--弹出窗口 添加订单-->
         <div class="modal fade" id="addOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
@@ -445,29 +483,24 @@ $position = $row['aposition'];
               </div>
                 <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="form-horizontal">
+                    <form method="post" action="../php/new_rental.php" class="form-horizontal">
                     <div class="form-group ">
-                        <label for="cid" class="col-xs-3 control-label">车辆ID：</label>
+                        <label for="cid" class="col-xs-3 control-label">*车辆ID：</label>
                         <div class="col-xs-8 ">
-                        <input type="email" class="form-control input-sm duiqi" id="cid" placeholder="">
+                        <input type="email" class="form-control input-sm duiqi" name="cid" id="cid" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
-                        <label for="uid" class="col-xs-3 control-label">用户ID：</label>
+                        <label for="uid" class="col-xs-3 control-label">*用户ID：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" id="uid" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="uid" id="uid" placeholder="">
                       </div>
                       </div>
+                    
                     <div class="form-group">
-                        <label for="deposit" class="col-xs-3 control-label">押金：</label>
+                        <label for="oday" class="col-xs-3 control-label">*预定天数：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="deposit" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="oday" class="col-xs-3 control-label">预定天数：</label>
-                        <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" id="oday" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="oday" id="oday" placeholder="">
                       </div>
                       </div>
 
@@ -486,327 +519,7 @@ $position = $row['aposition'];
             <!-- /.modal-dialog --> 
           </div>
 			
-			        <!--弹出窗口 确认租车-->
-        <div class="modal fade" id="sureSetout" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">确认租车</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="form-horizontal">
-                    <div class="form-group ">
-                        <label for="setout" class="col-xs-3 control-label">出车时间：</label>
-                        <div class="col-xs-8 ">
-                        <input type="date" class="form-control input-sm duiqi" id="cid" placeholder="">
-                      </div>
-                      </div>
-                      <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
-                  </div>
-                
-                    
-                  </form>
-                  </div>
-              </div>
 
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-			
-			        <!--弹出窗口 确认还车-->
-        <div class="modal fade" id="sureSetin" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">确认还车</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="form-horizontal">
-                    <div class="form-group ">
-                        <label for="setin" class="col-xs-4 control-label">还车时间：</label>
-                        <div class="col-xs-7 ">
-                        <input type="date" class="form-control input-sm duiqi" id="setin" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
-                        <div class="col-xs-7 ">
-                        <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
-                      </div>
-                      </div>
-						       <div class="form-group">
-                        <label for="note" class="col-xs-4 control-label">备注：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
-                      </div>
-                      </div>
-                    
-                  </form>
-                  </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-			
-        <!-- /.modal --> 
-        <!--查看车辆资源弹出窗口-->
-        <div class="modal fade" id="viewOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">查看订单信息</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid">
-                    <form class="form-horizontal">
-                    <div class="form-group ">
-                        <label for="cid" class="col-xs-4 control-label">合同号：</label>
-                        <div class="col-xs-7 ">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cplant" class="col-xs-4 control-label">车辆ID：</label>
-                        <div class="col-xs-7 ">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cbrand" class="col-xs-4 control-label">用户ID：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="ccolor" class="col-xs-4 control-label">经手人：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cvolume" class="col-xs-4 control-label">订单状态：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cdate" class="col-xs-4 control-label">押金：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="coil" class="col-xs-4 control-label">订单前金额：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cstate" class="col-xs-4 control-label">订单后金额：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="crent" class="col-xs-4 control-label">出车时间：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="cnote" class="col-xs-4 control-label">还车时间：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-						        <div class="form-group">
-                        <label for="cnote" class="col-xs-4 control-label">车辆损坏情况：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-						        <div class="form-group">
-                        <label for="cnote" class="col-xs-4 control-label">押金退还金额：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-						        <div class="form-group">
-                        <label for="cnote" class="col-xs-4 control-label">交通违规罚款：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-						        <div class="form-group">
-                        <label for="cnote" class="col-xs-4 control-label">备注信息：</label>
-                        <div class="col-xs-7">
-                        <label>xxx</label>
-                      </div>
-                      </div>
-                  </form>
-                  </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">确 定</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-        <!-- /.modal --> 
-        
-        <!--修改资源弹出窗口-->
-        <div class="modal fade" id="changeOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">修改订单信息</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid"> 
-					<form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="cid" class="col-xs-4 control-label">车辆ID：</label>
-                        <div class="col-xs-7 ">
-                        <input type="" class="form-control input-sm duiqi" id="cid" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="uid" class="col-xs-4 control-label">用户ID：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="uid" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="aid" class="col-xs-4 control-label">经手人：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="aid" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="conditions" class="col-xs-4 control-label">订单状态：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="conditions" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="deposit" class="col-xs-4 control-label">押金：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="deposit" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="money_b" class="col-xs-4 control-label">订单前金额：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="money_b" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="money_a" class="col-xs-4 control-label">订单后金额：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="money_a" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="setout" class="col-xs-4 control-label">出车时间：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="setout" placeholder="">
-                      </div>
-                      </div>
-                    <div class="form-group">
-                        <label for="setin" class="col-xs-4 control-label">还车时间：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="setin" placeholder="">
-                      </div>
-                      </div>
-						        <div class="form-group">
-                        <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="state" placeholder="">
-                      </div>
-                      </div>
-					        	<div class="form-group">
-                        <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="deposit_back" placeholder="">
-                      </div>
-                      </div>
-				        		<div class="form-group">
-                        <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="fine" placeholder="">
-                      </div>
-                      </div>
-					        	<div class="form-group">
-                        <label for="note" class="col-xs-4 control-label">备注信息：</label>
-                        <div class="col-xs-7">
-                        <input type="" class="form-control input-sm duiqi" id="note" placeholder="">
-                      </div>
-                      </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-green">保 存</button>
-                </div>
-                  </form>
-                </div>
-              </div>
-
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
-        <!-- /.modal --> 
-        
-        <!--弹出删除订单警告窗口-->
-        <div class="modal fade" id="deleteOrder" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid"> 确定要删除该订单？删除后不可恢复！ </div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-danger">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
         <!-- /.modal --> 
       </div>
 		
@@ -907,7 +620,6 @@ $position = $row['aposition'];
 
           ?>
 			
-
         
       </div>
 		
@@ -968,7 +680,7 @@ $position = $row['aposition'];
         <!-- /.modal --> 
       </div>
 		
-		        <!-- 财务报表--日 -->
+		        <!-- 财务报表-日 -->
       <div class="tab-pane" id="form_day" role="tabpanel">
         <div class="check-div form-inline">
         </div>
@@ -996,7 +708,7 @@ $position = $row['aposition'];
         
       </div>
 		
-		        <!-- 财务报表--月 -->
+		        <!-- 财务报表月 -->
         <div class="tab-pane" id="form_month" role="tabpanel">
         <div class="check-div form-inline">
           </div>
@@ -1025,7 +737,7 @@ $position = $row['aposition'];
 
       </div>
 		
-		        <!-- 财务报表--季度 -->
+		        <!-- 财务报表季度 -->
         <div class="tab-pane" id="form_season" role="tabpanel">
         <div class="check-div form-inline">
           </div>
@@ -1054,7 +766,7 @@ $position = $row['aposition'];
 
       </div>
 		
-		        <!-- 财务报表--年 -->
+		        <!-- 财务报表-年 -->
         <div class="tab-pane" id="form_year" role="tabpanel">
         <div class="check-div form-inline">
           </div>
@@ -1072,7 +784,7 @@ $position = $row['aposition'];
             
             <!-- 每一行-->
             <div class="row">
-                <div class="col-xs-2 "> 2018 </div>
+            <div class="col-xs-2 "> 2018 </div>
             <div class="col-xs-2"> 56 </div>
             <div class="col-xs-2"> 12 </div>
             <div class="col-xs-2"> 456 </div>

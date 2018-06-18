@@ -74,4 +74,3 @@ car_rent.uid = users.uid;
 
 
 
-
