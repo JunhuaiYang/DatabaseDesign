@@ -1,6 +1,31 @@
-        <!--{$temp->cid}-->
+<?php
+/* Smarty version 3.1.32, created on 2018-06-18 14:07:01
+  from '/var/www/html/admin/templates/car_edit.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.32',
+  'unifunc' => 'content_5b274c058f4522_25911734',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4159cd837f44fd5f17c48bf83b7fbf63cb8c4007' => 
+    array (
+      0 => '/var/www/html/admin/templates/car_edit.tpl',
+      1 => 1529301983,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5b274c058f4522_25911734 (Smarty_Internal_Template $_smarty_tpl) {
+?>        <!--<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+-->
         <!--查看车辆资源弹出窗口-->
-        <div class="modal fade" id="viewSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal fade" id="viewSource_<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -13,67 +38,78 @@
                     <div class="form-group ">
                         <label for="cid" class="col-xs-3 control-label">车辆ID:</label>
                         <div class="col-xs-8 ">
-                        <label>{$temp->cid}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group ">
                         <label for="cplant" class="col-xs-3 control-label">车牌号：</label>
                         <div class="col-xs-8 ">
-                        <label>{$temp->cplant}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cplant;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cbrand" class="col-xs-3 control-label">车辆品牌：</label>
                         <div class="col-xs-8 ">
-                        <label>{$temp->cbrand}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cbrand;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cmoder" class="col-xs-3 control-label">车辆型号：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->cmodel}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cmodel;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->ccolor}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->ccolor;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cvolume" class="col-xs-3 control-label">排量：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->cvolume}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cvolume;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->cdate}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cdate;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->coil}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->coil;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cstate" class="col-xs-3 control-label">车辆状况：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->cstate}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cstate;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="crent" class="col-xs-3 control-label">每日租金：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->crent}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->crent;?>
+</label>
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
                         <div class="col-xs-8">
-                        <label>{$temp->cnote}</label>
+                        <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cnote;?>
+</label>
                       </div>
                       </div>
                   </form>
@@ -93,7 +129,8 @@
 		
 			
         <!--弹出窗口 修改资源-->
-        <div class="modal fade" id="changeSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal fade" id="changeSource_<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -108,67 +145,78 @@
                     <div class="form-group ">
                         <label for="cid" class="col-xs-3 control-label">*车辆ID：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cid}" name="cid" id="cid" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+" name="cid" id="cid" placeholder="">
                       </div>
                       </div>
                     <div class="form-group ">
                         <label for="cplant" class="col-xs-3 control-label">*车牌号：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cplant}" name="cplant" id="cplant" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cplant;?>
+" name="cplant" id="cplant" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cbrand" class="col-xs-3 control-label">*车辆品牌：</label>
                         <div class="col-xs-8 ">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cbrand}" name="cbrand" id="cbrand" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cbrand;?>
+" name="cbrand" id="cbrand" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cmodel" class="col-xs-3 control-label">*车辆型号：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cmodel}" name="cmodel" id="cmodel" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cmodel;?>
+" name="cmodel" id="cmodel" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="ccolor" class="col-xs-3 control-label">车辆颜色：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->ccolor}" name="ccolor" id="ccolor" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->ccolor;?>
+" name="ccolor" id="ccolor" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cvolume" class="col-xs-3 control-label">排量：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cvolume}" name="cvolume" id="cvolume" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cvolume;?>
+" name="cvolume" id="cvolume" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cdate" class="col-xs-3 control-label">出厂日期：</label>
                         <div class="col-xs-8">
-                        <input type="date" class="form-control input-sm duiqi" value="{$temp->cdate}" name="cdate" id="cdate" placeholder="">
+                        <input type="date" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cdate;?>
+" name="cdate" id="cdate" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="coil" class="col-xs-3 control-label">燃油类型：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->coil}" name="coil" id="coil" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->coil;?>
+" name="coil" id="coil" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cstate" class="col-xs-3 control-label">*车辆状况：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cstate}" name="cstate" id="cstate" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cstate;?>
+" name="cstate" id="cstate" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="crent" class="col-xs-3 control-label">*每日租金：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->crent}" name="crent" id="crent" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->crent;?>
+" name="crent" id="crent" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
                         <label for="cnote" class="col-xs-3 control-label">备注信息：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" value="{$temp->cnote}" name="cnote" id="cnote" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cnote;?>
+" name="cnote" id="cnote" placeholder="">
                       </div>
                       </div>
 
@@ -188,7 +236,8 @@
 
         
         <!--弹出删除资源警告窗口-->
-        <div class="modal fade" id="deleteSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal fade" id="deleteSource_<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -202,7 +251,8 @@
               <div class="form-group">
                 <label for="cid" class="col-xs-3 control-label">车辆ID：</label>
                 <div class="col-xs-8">
-                <input type="" class="form-control input-sm duiqi" value="{$temp->cid}" name="cid" id="cid" placeholder="">
+                <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
+" name="cid" id="cid" placeholder="">
               </div>
             </div>
                 <div class="modal-footer">
@@ -214,4 +264,5 @@
             <!-- /.modal-content --> 
           </div>
             <!-- /.modal-dialog --> 
-          </div>
+          </div><?php }
+}

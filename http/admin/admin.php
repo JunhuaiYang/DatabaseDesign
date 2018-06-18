@@ -114,7 +114,7 @@ $position = $row['aposition'];
         <p> <a href="../php/admin_signout.php">退出登录</a> </p>
       </div>
     <div class="meun-title"> <strong>租车系统管理</strong> </div>
-    <div class="meun-item" aria-controls="sour" role="tab" href="#sour" data-toggle="tab"> <img src="../images/icon_change.png">车辆管理</div>
+    <div class="meun-item meun-item-active" aria-controls="sour" role="tab" href="#sour" data-toggle="tab"> <img src="../images/icon_change.png">车辆管理</div>
     <div class="meun-item" href="#order" aria-controls="order" role="tab" data-toggle="tab"> <img src="../images/icon_user_grey.png">订单信息</div>
 		
     <div class="meun-title"> <strong>用户</strong> </div>
@@ -137,7 +137,7 @@ $position = $row['aposition'];
 		
 		
         <!-- 资源管理模块 -->
-        <div class="tab-pane" id="sour" role="tabpanel">
+        <div class="tab-pane active" id="sour" role="tabpanel">
         <div class="check-div form-inline">
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加车辆</button>
           </div>
@@ -231,7 +231,7 @@ $position = $row['aposition'];
               $temp_car->cplant = $row['cplant'];
               $temp_car->cbrand = $row['cbrand'];
               $temp_car->cmodel = $row['cmodel'];
-              $temp_car->cstatus = $row['cstatus'];
+              $temp_car->cstate = $row['cstate'];
               $temp_car->crent = $row['crent'];
               $temp_car->ccolor = $row['ccolor'];
               $temp_car->cvolume = $row['cvolume'];
