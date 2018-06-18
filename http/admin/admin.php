@@ -217,6 +217,32 @@ $position = $row['aposition'];
               public $cnote;
             }
 
+            $temp_car = new car_reset();
+
+            $sarch_car = "SELECT * FROM car_rental.car";
+
+            $retval = mysqli_query($conn, $sarch_car);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_car->cid = $row['cid'];
+              $temp_car->cplant = $row['cplant'];
+              $temp_car->cbrand = $row['cbrand'];
+              $temp_car->cmodel = $row['cmodel'];
+              $temp_car->cstatus = $row['cstatus'];
+              $temp_car->crent = $row['crent'];
+              $temp_car->ccolor = $row['ccolor'];
+              $temp_car->cvolume = $row['cvolume'];
+              $temp_car->cdate = $row['cdate'];
+              $temp_car->coil = $row['coil'];
+              $temp_car->cnote = $row['cnote'];
+
+              $smarty_new_car->assign('temp', $temp_car);
+              $smarty_new_car->display('car_edit.tpl');
+            }
+
           ?>
 			
 			

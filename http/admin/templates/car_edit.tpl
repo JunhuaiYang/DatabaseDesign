@@ -1,3 +1,4 @@
+        <!--{$temp->cid}-->
         <!--查看车辆资源弹出窗口-->
         <div class="modal fade" id="viewSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
@@ -92,12 +93,12 @@
 		
 			
         <!--弹出窗口 修改资源-->
-        <div class="modal fade" id="addSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal fade" id="changeSource_{$temp->cid}" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">添加车辆</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">修改车辆信息</h4>
               </div>
                 <div class="modal-body">
                 <div class="container-fluid">
@@ -203,6 +204,7 @@
                 <div class="col-xs-8">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->cid}" name="cid" id="cid" placeholder="">
               </div>
+            </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
                 <button type="submit" class="btn btn-xs btn-danger">保 存</button>
