@@ -23,6 +23,7 @@ if (!$retval) {
 //取得结果
 $row = mysqli_fetch_array($retval, MYSQLI_ASSOC);
 $position = $row['aposition'];
+$aname = $row['aname'];
 
 ?>
 
@@ -39,6 +40,8 @@ $position = $row['aposition'];
   <script src="js/bootstrap.min.js"></script>
 
   <script src="js/myjs/main_check.js"></script>
+  <script src="js/myjs/signin.js"></script>
+
   <script>
     $(function () {
       $(".meun-item").click(function () {
@@ -108,6 +111,12 @@ $position = $row['aposition'];
 		<p> <span>职位： 
             <?php
             echo $position;
+            ?>
+			</span>
+      </p>
+      <p> <span>姓名： 
+            <?php
+            echo $aname;
             ?>
 			</span>
       </p>
@@ -323,7 +332,7 @@ $position = $row['aposition'];
 
                   <div class="modal-footer">
                   <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                  <button type="submit" onclick="return new_car()" class="btn btn-xs btn-xs btn-green"  >保 存</button>
+                  <button  type="submit" onclick="return new_car()" class="btn btn-xs btn-xs btn-green"  >保 存</button>
                   </div>
 
                   </form>
@@ -372,10 +381,11 @@ $position = $row['aposition'];
               public $uid;
               public $aid;
               public $deposit;
+              public $money_b;
               public $money_a;
               public $setout;
               public $setin;
-              public $cstate;
+              public $state;
               public $deposit_back;
               public $fine;
               public $note;
@@ -413,7 +423,7 @@ $position = $row['aposition'];
               $temp_rental->money_a  = $row['money_a'];
               $temp_rental->setout = $row['setout'];
               $temp_rental->setin  = $row['setin'];
-              $temp_rental->cstate  = $row['cstate'];
+              $temp_rental->state  = $row['state'];
               $temp_rental->deposit_back  = $row['deposit_back'];
               $temp_rental->fine  = $row['fine'];
               $temp_rental->note  = $row['note'];
@@ -449,10 +459,11 @@ $position = $row['aposition'];
               $temp_rental->uid  = $row['uid'];
               $temp_rental->aid  = $row['aid'];
               $temp_rental->deposit  = $row['deposit'];
+              $temp_rental->money_b  = $row['money_b'];
               $temp_rental->money_a  = $row['money_a'];
               $temp_rental->setout = $row['setout'];
               $temp_rental->setin  = $row['setin'];
-              $temp_rental->cstate  = $row['cstate'];
+              $temp_rental->cstate  = $row['state'];
               $temp_rental->deposit_back  = $row['deposit_back'];
               $temp_rental->fine  = $row['fine'];
               $temp_rental->note  = $row['note'];
@@ -487,7 +498,7 @@ $position = $row['aposition'];
                     <div class="form-group ">
                         <label for="cid" class="col-xs-3 control-label">*车辆ID：</label>
                         <div class="col-xs-8 ">
-                        <input type="email" class="form-control input-sm duiqi" name="cid" id="cid" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="cid" id="cid" placeholder="">
                       </div>
                       </div>
                     <div class="form-group">
@@ -498,15 +509,15 @@ $position = $row['aposition'];
                       </div>
                     
                     <div class="form-group">
-                        <label for="oday" class="col-xs-3 control-label">*预定天数：</label>
+                        <label for="plan_day" class="col-xs-3 control-label">*预定天数：</label>
                         <div class="col-xs-8">
-                        <input type="" class="form-control input-sm duiqi" name="oday" id="oday" placeholder="">
+                        <input type="" class="form-control input-sm duiqi" name="plan_day" id="plan_day" placeholder="">
                       </div>
                       </div>
 
                     <div class="modal-footer">
                     <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
+                    <button type="submit" onclick="return new_rental()" class="btn btn-xs btn-xs btn-green">保 存</button>
                   </div>
                     
                   </form>

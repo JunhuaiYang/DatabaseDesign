@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-18 16:27:13
+/* Smarty version 3.1.32, created on 2018-06-19 01:45:07
   from '/var/www/html/admin/templates/car_edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b276ce1eee819_85991276',
+  'unifunc' => 'content_5b27efa3015a06_70638747',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4159cd837f44fd5f17c48bf83b7fbf63cb8c4007' => 
     array (
       0 => '/var/www/html/admin/templates/car_edit.tpl',
-      1 => 1529310230,
+      1 => 1529343898,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b276ce1eee819_85991276 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b27efa3015a06_70638747 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
 -->
 <!--查看车辆资源弹出窗口-->
@@ -226,7 +226,7 @@ function content_5b276ce1eee819_85991276 (Smarty_Internal_Template $_smarty_tpl)
 
             <div class="modal-footer">
               <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-              <button type="submit" onclick="return new_car()" class="btn btn-xs btn-xs btn-green">保 存</button>
+              <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
             </div>
 
           </form>

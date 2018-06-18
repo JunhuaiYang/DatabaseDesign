@@ -178,7 +178,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-              <button type="submit" onclick="return new_car()" class="btn btn-xs btn-xs btn-green">保 存</button>
+              <button type="submit" class="btn btn-xs btn-xs btn-green">保 存</button>
             </div>
 
           </form>
