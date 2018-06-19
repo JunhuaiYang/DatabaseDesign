@@ -90,29 +90,39 @@ select fdate, fmoney from fixed_car;
 
 -- 创建视图
 -- 查询
-select fdate, IFNULL(money_a, 0), IFNULL((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
-from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
-union
-select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
-from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
+-- select fdate, IFNULL(money_a, 0), IFNULL((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
+-- from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
+-- union
+-- select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
+-- from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
 
-create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
-as
-select fdate, ifnull(money_a, 0), ifnull((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
-from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
-union
-select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
-from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
+-- 错的
+-- create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
+-- as
+-- select fdate, ifnull(money_a, 0), ifnull((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
+-- from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
+-- union
+-- select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
+-- from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
 
-select dates,rent_in, deposit_in, all_in, fixed_out, ( all_in - fixed_out)
+select dates, sum(rent_in), sum(deposit_in), sum(all_in) , sum(fixed_out) , sum(( all_in - fixed_out)) 
 from date_table_one
+group by dates
 order by dates;
 
 create view date_table (dates, rent_in, deposit_in, all_in, fixed_out, profit)
 as
-select dates,rent_in, deposit_in, all_in, fixed_out, ( all_in - fixed_out)
+select dates, sum(rent_in), sum(deposit_in), sum(all_in) , sum(fixed_out) , sum(( all_in - fixed_out)) 
 from date_table_one
+group by dates
 order by dates;
+
+-- 错
+-- create view date_table (dates, rent_in, deposit_in, all_in, fixed_out, profit)
+-- as
+-- select dates,rent_in, deposit_in, all_in, fixed_out, ( all_in - fixed_out)
+-- from date_table_one
+-- order by dates;
 
 select date_format(dates,'%Y-%m') ,sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
 from date_table
@@ -148,3 +158,14 @@ order by quarter(dates), year(dates);
 select  * from car_rent, car, users, admin
             where car_rent.cid = car.cid and
             car_rent.uid = users.uid and admin.aid = car_rent.aid;
+            
+-- 新
+create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
+as
+select setin, sum(money_a),sum((deposit - deposit_back)) ,sum((money_a + deposit - deposit_back)) ,0
+from  car_rent
+group by setin
+union
+select fdate, 0,0,0, sum(fmoney) 
+from fixed_car
+group by fdate;

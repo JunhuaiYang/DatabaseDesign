@@ -1,24 +1,25 @@
 <!doctype html>
 <?php
 //连接数据库
-include "php/conn_db.php";
+include "../php/conn_db.php";
   //登录检测
-session_start();
-if (empty($_SESSION['login'])) {
-  echo "<script>alert('你还没有登录！不能访问该页面！');history.go(-1);</script>";
-  exit;
-}
+  session_start();
+  if (empty($_SESSION['login'])) {
+    echo "<script>alert('你还没有登录！不能访问该页面！');history.go(-1);</script>";
+    exit;
+  }
   //权限检测
-if ($_SESSION['type'] != 'users') {
-  echo "<script>alert('你没有权限访问该页面！');history.go(-1);</script>";
-  exit;
-}
-    //获得用户名
-$uname = $_SESSION['uname'];
-$uid = $_SESSION['uid'];
+  if($_SESSION['type'] != 'admin'){
+    echo "<script>alert('你没有权限访问该页面！');history.go(-1);</script>";
+    exit;
+  }
+
+      //获得用户名
+$username = $_SESSION['user'];
+$uid = $_GET['uid'];
 
 //smarty
-require 'admin/smarty/libs/Smarty.class.php';
+require 'smarty/libs/Smarty.class.php';
 
 ?>
 
@@ -77,7 +78,7 @@ require 'admin/smarty/libs/Smarty.class.php';
   <script src="js/respond.min.js"></script>
 <![endif]-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="admin/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="css/common.css" />
   <link rel="stylesheet" type="text/css" href="css/slide.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/flat-ui.min.css" />
@@ -89,17 +90,17 @@ require 'admin/smarty/libs/Smarty.class.php';
     <!-- 左侧菜单栏目块 -->
     <div class="leftMeun" id="leftMeun">
     <div id="logoDiv">
-        <p id="logoP"><a href="users.php"> <img id="logo" alt="租车系统后台" src="admin/images/timg.jpg"> <span>格里芬租车</span></a> </p>
+        <p id="logoP"><a href="admin.php"> <img id="logo" alt="租车系统后台" src="images/timg.jpg"> <span>格里芬租车</span></a> </p>
       </div>
     <div id="personInfor">
         <p id="userName">杨钧淮</p>
         <p> <span>yangjunhuai@qq.com</span> </p>
-        <p> <span>项目地址：<a href="https://github.com/JunhuaiYang/DatabaseDesign"><img id="logo" src="admin/images/github.jpeg" alt="github"></a></span> </p>
+        <p> <span>项目地址：<a href="https://github.com/JunhuaiYang/DatabaseDesign"><img id="logo" src="images/github.jpeg" alt="github"></a></span> </p>
         <small>YangJunhuai<br> &copy; All Rights Reserved. </small>
 		<p><br></p>
         <p> <span>欢迎你： 
             <?php
-            echo $uname;
+            echo $username;
             ?>
 			</span>
       </p>
@@ -115,22 +116,23 @@ require 'admin/smarty/libs/Smarty.class.php';
     <div class="tab-content"> 
 		
 <!-- 订单信息 -->
-        <div class="tab-pane active" id="order" role="tabpanel">
+<div class="tab-pane active" id="order" role="tabpanel">
+        <div class="check-div form-inline">
+          <a href="admin.php"><button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addOrder">返回</button></a>
+          </div>
         <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
-            <div class="col-xs-1"> 订单编号 </div>
+            <div class="col-xs-1 "> 订单编号 </div>
+            <div class="col-xs-1"> 用户姓名 </div>
             <div class="col-xs-1"> 车辆ID </div>
-            <div class="col-xs-1"> 车牌号 </div>
+            <div class="col-xs-2"> 车牌号 </div>
             <div class="col-xs-1"> 车辆品牌 </div>
             <div class="col-xs-1"> 车辆型号 </div>
-            <div class="col-xs-1"> 经手人 </div>
-            <div class="col-xs-1"> 押金 </div>
-            <div class="col-xs-1"> 预定金额 </div>
+            <div class="col-xs-1"> 预定日期 </div>
             <div class="col-xs-1"> 订单状态 </div>
-            <div class="col-xs-1"> 退换押金 </div>
-            <div class="col-xs-1"> 订单金额 </div>
-            <div class="col-xs-1"> 操作 </div>
+            <!--3个宽度来操作-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
           </div>
             <div class="tablebody"> 
             
@@ -173,7 +175,7 @@ require 'admin/smarty/libs/Smarty.class.php';
             $sarch_rental = "SELECT distinct * from car_rent, car, users, admin
             where car_rent.cid = car.cid and
             car_rent.uid = users.uid and admin.aid = car_rent.aid and users.uid = '$uid'
-            order by status,contractid ";
+            order by status,contractid";
 
             $retval = mysqli_query($conn, $sarch_rental);
             if (!$retval) {
@@ -186,7 +188,6 @@ require 'admin/smarty/libs/Smarty.class.php';
               $temp_rental->uid = $row['uid'];
               $temp_rental->deposit = $row['deposit'];
               $temp_rental->money_a = $row['money_a'];
-              $temp_rental->money_b = $row['money_b'];
               $temp_rental->setout = $row['setout'];
               $temp_rental->setin = $row['setin'];
               $temp_rental->state = $row['state'];
@@ -205,7 +206,7 @@ require 'admin/smarty/libs/Smarty.class.php';
               $temp_rental->cplandate = $row['cplandate'];
 
               $smarty_rental->assign('temp', $temp_rental);
-              $smarty_rental->display('rental_row_users.tpl');
+              $smarty_rental->display('rental_row.tpl');
             }
 
             ?>
@@ -246,11 +247,9 @@ require 'admin/smarty/libs/Smarty.class.php';
             $temp_rental->cplandate = $row['cplandate'];
 
             $smarty_rental->assign('temp', $temp_rental);
-            $smarty_rental->display('rental_edit_users.tpl');
+            $smarty_rental->display('rental_edit.tpl');
           }
-
           ?>
-        <!--弹出窗口 添加订单-->
         <!-- /.modal --> 
       </div>
 		

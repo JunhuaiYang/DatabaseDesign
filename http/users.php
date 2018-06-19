@@ -119,6 +119,7 @@ require 'admin/smarty/libs/Smarty.class.php';
           <div class="carousel-caption b-slider__info">
             <h3>Find your dream</h3>
             <h2>来租车吧！</h2>
+            <h5>加入会员 享受九折优惠</h5>
             </div>
         </div>
       </div>
@@ -127,6 +128,7 @@ require 'admin/smarty/libs/Smarty.class.php';
           <div class="carousel-caption b-slider__info">
             <h3>Find your dream</h3>
             <h2>来租车吧！</h2> </div>
+            <h4>加入会员 享受九折优惠</h4>
         </div>
       </div>
       <div class="item"> <img src="media/main-slider/3.jpg"  alt="sliderImg">
@@ -134,6 +136,7 @@ require 'admin/smarty/libs/Smarty.class.php';
           <div class="carousel-caption b-slider__info">
             <h3>Find your dream</h3>
             <h2>来租车吧！</h2> </div>
+            <h4>加入会员 享受九折优惠</h4>
         </div>
       </div>
     </div>

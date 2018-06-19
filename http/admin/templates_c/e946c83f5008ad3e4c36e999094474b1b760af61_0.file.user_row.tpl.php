@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-18 15:42:55
+/* Smarty version 3.1.32, created on 2018-06-19 19:44:41
   from '/var/www/html/admin/templates/user_row.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b27627f1c9ba7_81390872',
+  'unifunc' => 'content_5b28eca93103f4_22659116',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e946c83f5008ad3e4c36e999094474b1b760af61' => 
     array (
       0 => '/var/www/html/admin/templates/user_row.tpl',
-      1 => 1529307770,
+      1 => 1529408641,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b27627f1c9ba7_81390872 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b28eca93103f4_22659116 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <!--		<?php echo $_smarty_tpl->tpl_vars['temp']->value->uid;?>
 		行-->
             <div class="row">
@@ -59,8 +59,9 @@ function content_5b27627f1c9ba7_81390872 (Smarty_Internal_Template $_smarty_tpl)
 ">查看详细</button>
                 <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#reviseUser_<?php echo $_smarty_tpl->tpl_vars['temp']->value->uid;?>
 ">修改会员</button>
-				        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#_<?php echo $_smarty_tpl->tpl_vars['temp']->value->uid;?>
-">查看历史订单</button>
+                <a href="rental_users.php?uid=<?php echo $_smarty_tpl->tpl_vars['temp']->value->uid;?>
+"><button class="btn btn-primary btn-xs" data-toggle="modal">查看历史订单</button></a>
+				
               </div>
               </div><?php }
 }

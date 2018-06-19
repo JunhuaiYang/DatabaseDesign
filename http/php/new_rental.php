@@ -56,11 +56,16 @@ if($cstatus != '0')
   echo "<script>alert('该车辆状态无法租车！');history.go(-1);</script>";
   exit;
 }
+//获得单价
+$crent = $row['crent'];
+
+//生成预定金额
+$money_b = $crent*$plan_day;
 
 
 //数据插入
-$sql = "INSERT INTO `car_rental`.`car_rent` (`cid`, `uid`, `plan_day` , `cplandate` , `aid`) 
-VALUES ('$cid', '$uid', '$plan_day', '$cplandate', '0')";
+$sql = "INSERT INTO `car_rental`.`car_rent` (`cid`, `uid`, `plan_day` , `cplandate` , `aid`, `money_b`) 
+VALUES ('$cid', '$uid', '$plan_day', '$cplandate', '0', '$money_b')";
 $retval = mysqli_query($conn, $sql);
 if (!$retval) {
   die('无法读取数据: ' . mysqli_error($conn));
@@ -73,6 +78,9 @@ if (!$retval) {
   die('无法读取数据: ' . mysqli_error($conn));
 }
 
+if(!empty($uid_get))  //客户端
+  echo "<script>alert('订单生成成功！');history.go(-2);</script>";
+else
 echo "<script>alert('订单生成成功！');history.go(-1);</script>";
 
 ?>

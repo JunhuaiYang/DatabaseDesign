@@ -129,8 +129,8 @@ $aname = $row['aname'];
         <p> <a href="../php/admin_signout.php">退出登录</a> </p>
       </div>
     <div class="meun-title"> <strong>租车系统管理</strong> </div>
-    <div class="meun-item meun-item-active" aria-controls="sour" role="tab" href="#sour" data-toggle="tab"> <img src="../images/icon_change.png">车辆管理</div>
-    <div class="meun-item" href="#order" aria-controls="order" role="tab" data-toggle="tab"> <img src="../images/icon_user_grey.png">订单信息</div>
+    <div class="meun-item meun-item-active" href="#order" aria-controls="order" role="tab" data-toggle="tab"> <img src="../images/icon_user_grey.png">订单信息</div>
+    <div class="meun-item " aria-controls="sour" role="tab" href="#sour" data-toggle="tab"> <img src="../images/icon_change.png">车辆管理</div>
 		
     <div class="meun-title"> <strong>用户</strong> </div>
     <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"> <img src="../images/icon_chara_grey.png">用户管理</div>
@@ -152,7 +152,7 @@ $aname = $row['aname'];
 		
 		
         <!-- 车辆管理模块 -->
-        <div class="tab-pane active" id="sour" role="tabpanel">
+        <div class="tab-pane" id="sour" role="tabpanel">
         <div class="check-div form-inline">
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加车辆</button>
           </div>
@@ -357,7 +357,7 @@ $aname = $row['aname'];
 		
 		
 <!-- 订单信息 -->
-        <div class="tab-pane" id="order" role="tabpanel">
+        <div class="tab-pane active" id="order" role="tabpanel">
         <div class="check-div form-inline">
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addOrder">添加订单</button>
           </div>
@@ -415,7 +415,8 @@ $aname = $row['aname'];
 
             $sarch_rental = "SELECT distinct * from car_rent, car, users, admin
             where car_rent.cid = car.cid and
-            car_rent.uid = users.uid and admin.aid = car_rent.aid";
+            car_rent.uid = users.uid and admin.aid = car_rent.aid
+            order by status,contractid";
 
             $retval = mysqli_query($conn, $sarch_rental);
             if (!$retval) {

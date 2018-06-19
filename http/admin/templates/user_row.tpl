@@ -33,6 +33,7 @@
                 <div class="col-xs-3">
                 <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewUser_{$temp->uid}">查看详细</button>
                 <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#reviseUser_{$temp->uid}">修改会员</button>
-				        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#_{$temp->uid}">查看历史订单</button>
+                <a href="rental_users.php?uid={$temp->uid}"><button class="btn btn-primary btn-xs" data-toggle="modal">查看历史订单</button></a>
+				
               </div>
               </div>
