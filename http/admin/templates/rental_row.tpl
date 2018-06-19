@@ -5,7 +5,7 @@
   <div class="col-xs-2">  {$temp->cplant} </div>
   <div class="col-xs-1 "> {$temp->cbrand} </div>
   <div class="col-xs-1 "> {$temp->cmodel} </div>
-  <div class="col-xs-1 "> {$temp->aname} </div>
+  <div class="col-xs-1 "> {$temp->cplandate} </div>
 
   <div class="col-xs-1 "> 
     {if $temp->status eq '0'}

@@ -20,13 +20,13 @@
             <div class="form-group ">
               <label for="setout" class="col-xs-3 control-label">出车时间：</label>
               <div class="col-xs-8 ">
-                <input type="date" class="form-control input-sm duiqi" name="setout" id="setout" placeholder="">
+                <input type="date" class="form-control input-sm duiqi" value="{$temp->cplandate}" name="setout" id="setout" placeholder="">
               </div>
             </div>
             <div class="form-group">
                 <label for="deposit" class="col-xs-3 control-label">押金：</label>
                 <div class="col-xs-8">
-                <input type="" class="form-control input-sm duiqi" name="deposit" id="deposit" placeholder="">
+                <input type="" class="form-control input-sm duiqi" value="2000" name="deposit" id="deposit" placeholder="">
               </div>
               </div>
             <div class="modal-footer">
@@ -188,6 +188,12 @@
                 <label>{$temp->money_a}</label>
               </div>
             </div>
+            <div class="form-group">
+                <label for="crent" class="col-xs-4 control-label">预定时间：</label>
+                <div class="col-xs-7">
+                  <label>{$temp->cplandate}</label>
+                </div>
+              </div>
             <div class="form-group">
               <label for="crent" class="col-xs-4 control-label">出车时间：</label>
               <div class="col-xs-7">

@@ -56,6 +56,7 @@ if (empty($username) || empty($password) || empty($name) || empty($position)
   session_start();
   $_SESSION['login'] = 'true';
   $_SESSION['user'] = $username;
+  $_SESSION['type'] = 'admin';
 
   mysqli_close($conn); //关闭链接
 

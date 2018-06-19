@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-19 09:46:57
+/* Smarty version 3.1.32, created on 2018-06-19 17:31:29
   from '/var/www/html/admin/templates/rental_edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b286091249321_12503419',
+  'unifunc' => 'content_5b28cd71bdd4b9_45550820',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bec0bb3070e54013e2e12a130750df89bbf7250d' => 
     array (
       0 => '/var/www/html/admin/templates/rental_edit.tpl',
-      1 => 1529372811,
+      1 => 1529400665,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b286091249321_12503419 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b28cd71bdd4b9_45550820 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--弹出窗口 确认租车-->
 <div class="modal fade" id="sureSetout_<?php echo $_smarty_tpl->tpl_vars['temp']->value->contractid;?>
 " role="dialog" aria-labelledby="gridSystemModalLabel">
@@ -45,13 +45,14 @@ function content_5b286091249321_12503419 (Smarty_Internal_Template $_smarty_tpl)
             <div class="form-group ">
               <label for="setout" class="col-xs-3 control-label">出车时间：</label>
               <div class="col-xs-8 ">
-                <input type="date" class="form-control input-sm duiqi" name="setout" id="setout" placeholder="">
+                <input type="date" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cplandate;?>
+" name="setout" id="setout" placeholder="">
               </div>
             </div>
             <div class="form-group">
                 <label for="deposit" class="col-xs-3 control-label">押金：</label>
                 <div class="col-xs-8">
-                <input type="" class="form-control input-sm duiqi" name="deposit" id="deposit" placeholder="">
+                <input type="" class="form-control input-sm duiqi" value="2000" name="deposit" id="deposit" placeholder="">
               </div>
               </div>
             <div class="modal-footer">
@@ -228,6 +229,13 @@ function content_5b286091249321_12503419 (Smarty_Internal_Template $_smarty_tpl)
 </label>
               </div>
             </div>
+            <div class="form-group">
+                <label for="crent" class="col-xs-4 control-label">预定时间：</label>
+                <div class="col-xs-7">
+                  <label><?php echo $_smarty_tpl->tpl_vars['temp']->value->cplandate;?>
+</label>
+                </div>
+              </div>
             <div class="form-group">
               <label for="crent" class="col-xs-4 control-label">出车时间：</label>
               <div class="col-xs-7">

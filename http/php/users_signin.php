@@ -32,8 +32,9 @@
             session_start();
             $_SESSION['login'] = 'true';
             $_SESSION['user'] = $username;
+            $_SESSION['type'] = 'users';
             // 自动跳转
-            echo '<meta http-equiv="refresh" content="1;url=../users.html">'; 
+            echo '<meta http-equiv="refresh" content="1;url=../users.php">'; 
         }  
         else 
         {  

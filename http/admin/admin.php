@@ -9,6 +9,12 @@ if (empty($_SESSION['login'])) {
   echo "<script>alert('你还没有登录！不能访问该页面！');history.go(-1);</script>";
   exit;
 }
+//权限检测
+if($_SESSION['type'] != 'admin'){
+  echo "<script>alert('你没有权限访问该页面！');history.go(-1);</script>";
+  exit;
+}
+
   //获得用户名
 $username = $_SESSION['user'];
 
@@ -364,7 +370,7 @@ $aname = $row['aname'];
             <div class="col-xs-2"> 车牌号 </div>
             <div class="col-xs-1"> 车辆品牌 </div>
             <div class="col-xs-1"> 车辆型号 </div>
-            <div class="col-xs-1"> 经手人 </div>
+            <div class="col-xs-1"> 预定日期 </div>
             <div class="col-xs-1"> 订单状态 </div>
             <!--3个宽度来操作-->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
@@ -393,6 +399,7 @@ $aname = $row['aname'];
               public $status;
               public $plan_day;
               public $real_day;
+              public $cplandate;
 
               public $uname;
               public $cbrand;
@@ -406,9 +413,9 @@ $aname = $row['aname'];
             $temp_rental = new rental();
             $smarty_rental = new Smarty();
 
-            $sarch_rental = "select * from car_rent, car, users, admin
-            where car_rent.aid = admin.aid and car_rent.cid = car.cid and
-            car_rent.uid = users.uid";
+            $sarch_rental = "SELECT distinct * from car_rent, car, users, admin
+            where car_rent.cid = car.cid and
+            car_rent.uid = users.uid and admin.aid = car_rent.aid";
 
             $retval = mysqli_query($conn, $sarch_rental);
             if (!$retval) {
@@ -419,7 +426,6 @@ $aname = $row['aname'];
               $temp_rental->contractid = $row['contractid'];
               $temp_rental->cid = $row['cid'];
               $temp_rental->uid = $row['uid'];
-              $temp_rental->aid = $row['aid'];
               $temp_rental->deposit = $row['deposit'];
               $temp_rental->money_a = $row['money_a'];
               $temp_rental->setout = $row['setout'];
@@ -437,6 +443,7 @@ $aname = $row['aname'];
               $temp_rental->username = $row['username'];
               $temp_rental->aname = $row['aname'];
               $temp_rental->uidnum = $row['uidnum'];
+              $temp_rental->cplandate = $row['cplandate'];
 
               $smarty_rental->assign('temp', $temp_rental);
               $smarty_rental->display('rental_row.tpl');
@@ -477,6 +484,7 @@ $aname = $row['aname'];
             $temp_rental->username = $row['username'];
             $temp_rental->aname = $row['aname'];
             $temp_rental->real_day = $row['real_day'];
+            $temp_rental->cplandate = $row['cplandate'];
 
             $smarty_rental->assign('temp', $temp_rental);
             $smarty_rental->display('rental_edit.tpl');
@@ -506,6 +514,13 @@ $aname = $row['aname'];
                         <label for="uid" class="col-xs-3 control-label">*用户ID：</label>
                         <div class="col-xs-8 ">
                         <input type="" class="form-control input-sm duiqi" name="uid" id="uid" placeholder="">
+                      </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="cplandate" class="col-xs-3 control-label">*预定日期：</label>
+                        <div class="col-xs-8">
+                        <input type="date" class="form-control input-sm duiqi" name="cplandate" id="cplandate" placeholder="">
                       </div>
                       </div>
                     

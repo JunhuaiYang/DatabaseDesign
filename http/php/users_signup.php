@@ -65,12 +65,13 @@
         }
 
         echo '<h3> 注册成功！</h3>';
-        echo '<meta http-equiv="refresh" content="1;url=../users.html">'; 
+        echo '<meta http-equiv="refresh" content="1;url=../users.php">'; 
         
         //设置SESSION变量
         session_start();
         $_SESSION['login'] = 'true';
         $_SESSION['user'] = $username;
+        $_SESSION['type'] = 'users';
 
         mysqli_close($conn); //关闭链接
 

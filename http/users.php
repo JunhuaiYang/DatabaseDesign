@@ -1,4 +1,44 @@
 ﻿<!DOCTYPE html>
+
+<?php
+  //连接数据库
+include "php/conn_db.php";
+  //登录检测
+session_start();
+if (empty($_SESSION['login'])) {
+  echo "<script>alert('你还没有登录！不能访问该页面！');history.go(-1);</script>";
+  exit;
+}
+//权限检测
+if($_SESSION['type'] != 'users'){
+  echo "<script>alert('你没有权限访问该页面！');history.go(-1);</script>";
+  exit;
+}
+  //获得用户名
+$username = $_SESSION['user'];
+
+//获得用户信息
+$sql_ad = "select * from users where username = '" . $username . "'";
+//查询数据库
+$retval = mysqli_query($conn, $sql_ad);
+if (!$retval) {
+  die('无法读取数据: ' . mysqli_error($conn));
+}
+//取得结果
+$row = mysqli_fetch_array($retval, MYSQLI_ASSOC);
+$uid = $row['uid'];
+$uname = $row['uname'];
+//设置uid
+$_SESSION['uid'] = $uid;
+$_SESSION['uname'] = $uname;
+
+
+//smarty
+require 'admin/smarty/libs/Smarty.class.php';
+
+
+?>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -41,8 +81,8 @@
     <div class="row">
       <div class="col-sm-3 col-xs-4">
         <div class="b-nav__logo wow slideInLeft" data-wow-delay="0.3s">
-          <h3><a href="submit.html">格里芬<span>租车</span></a></h3>
-          <h2><a href="submit.html">租车新体验</a></h2>
+          <h3><a href="users.php">格里芬<span>租车</span></a></h3>
+          <h2><a href="users.php">租车新体验</a></h2>
         </div>
       </div>
       <div class="col-sm-9 col-xs-8">
@@ -52,11 +92,16 @@
           </div>
           <div class="collapse navbar-collapse navbar-main-slide" id="nav">
             <ul class="navbar-nav-menu">
-              <li><a href="submit.html">首页</a></li>
+            <li>欢迎你：<a>
+              <?php
+              echo $uname;
+              ?>
+            </a></li>
+              <li><a href="users.php">首页</a></li>
               
-              <li><a href="submit.html">订单查询</a></li>
+              <li><a href="users.php">订单查询</a></li>
 	
-              <li><a href="contacts.html">退出登录</a></li>
+              <li><a href="php/users_signout.php">退出登录</a></li>
             </ul>
           </div>
         </div>
@@ -99,35 +144,72 @@
 
 <section class="b-featured">
   <div class="container">
-    <h2 class="s-title wow zoomInUp" data-wow-delay="0.3s">Featured Vehicles</h2>
+    <h2 class="s-title wow zoomInUp" data-wow-delay="0.3s">车辆列表</h2>
 <!--	  begin-->
 	          <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 "> 车辆编号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车牌号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆型号 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 每日租金 </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> 车辆状态 </div>
-            <!--3个宽度来操作-->
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
+            <div class="col-xs-1"> 车辆编号 </div>
+            <div class="col-xs-2"> 车牌号 </div>
+            <div class="col-xs-1"> 车辆品牌 </div>
+            <div class="col-xs-1"> 车辆型号 </div>
+            <div class="col-xs-1"> 车辆颜色 </div>
+            <div class="col-xs-1"> 排量 </div>
+            <div class="col-xs-1"> 燃油类型 </div>
+            <div class="col-xs-2"> 出厂日期 </div>
+            <div class="col-xs-1"> 每日租金 </div>
+
+            <div class="col-xs-1"> 操作 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-1 "> 1 </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> 13688889999 </div>
-                <div class="col-xs-2"> 875 </div>
-                <!--					按钮-->
-                <div class="col-xs-3">
-                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewSource">查看详细</button>
-                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-              </div>
-              </div>
+            <?php
+
+            class car_reset
+            {
+              public $cid;
+              public $cplant;
+              public $cbrand;
+              public $cmodel;
+              public $cstate;
+              public $crent;
+              public $ccolor;
+              public $cvolume;
+              public $cdate;
+              public $coil;
+              public $cnote;
+            }
+
+            $temp_car = new car_reset();
+            $smarty_new_car = new Smarty();
+
+            $sarch_car = "SELECT * FROM car_rental.car where cstatus = 0";
+
+            $retval = mysqli_query($conn, $sarch_car);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_car->cid = $row['cid'];
+              $temp_car->cplant = $row['cplant'];
+              $temp_car->cbrand = $row['cbrand'];
+              $temp_car->cmodel = $row['cmodel'];
+              $temp_car->cstate = $row['cstate'];
+              $temp_car->crent = $row['crent'];
+              $temp_car->ccolor = $row['ccolor'];
+              $temp_car->cvolume = $row['cvolume'];
+              $temp_car->cdate = $row['cdate'];
+              $temp_car->coil = $row['coil'];
+              $temp_car->cnote = $row['cnote'];
+
+              $smarty_new_car->assign('temp', $temp_car);
+              $smarty_new_car->display('user_car.tpl');
+            }
+
+
+            ?>
           </div>
           </div>
 	  
@@ -149,7 +231,7 @@
       </div>
       <div class="col-xs-8">
 			<div class="b-footer__content wow zoomInRight" data-wow-delay="0.5s">
-								<div class="b-footer__content-social">
+								<div class="b-footer__content-social">项目地址：
 									<a href="#https://github.com/JunhuaiYang"><span class="fa fa-github"></span></a>
 								</div>
 </div>

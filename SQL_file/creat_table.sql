@@ -98,7 +98,7 @@ from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
 
 create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
 as
-select fdate, IFNULL(money_a, 0), IFNULL((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
+select fdate, ifnull(money_a, 0), ifnull((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
 from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
 union
 select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
@@ -137,3 +137,14 @@ create view sum_table (rent_in, deposit_in, all_in, fixed_out, profit)
 as
 select sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
 from date_table;
+
+create view quarter_table (years, dates, rent_in, deposit_in, all_in, fixed_out, profit)
+as
+select year(dates), quarter(dates) ,sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
+from date_table
+group by quarter(dates), year(dates)
+order by quarter(dates), year(dates);
+
+select  * from car_rent, car, users, admin
+            where car_rent.cid = car.cid and
+            car_rent.uid = users.uid and admin.aid = car_rent.aid;

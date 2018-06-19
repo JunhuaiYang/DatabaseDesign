@@ -33,6 +33,7 @@
             session_start();
             $_SESSION['login'] = 'true';
             $_SESSION['user'] = $username;
+            $_SESSION['type'] = 'admin';
             // 自动跳转
             echo '<meta http-equiv="refresh" content="1;url=../admin/admin.php">'; 
         }  

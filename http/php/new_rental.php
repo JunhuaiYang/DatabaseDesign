@@ -4,33 +4,22 @@
 $cid = $_POST['cid'];
 $uid = $_POST['uid'];
 $plan_day = $_POST['plan_day'];
+$cplandate = $_POST['cplandate'];
 
-//获得管理员id
-session_start();
-//获得用户名
-$username = $_SESSION['user'];
+//get 方法取得
+$uid_get = $_GET['uid_get'];
 
-//连接数据库
-include "conn_db.php";
-//获得职位
-$sql_ad = "select * from admin where ausername = '" . $username . "'";
-//查询数据库
-$retval = mysqli_query($conn, $sql_ad);
-if (!$retval) {
-  die('无法读取数据: ' . mysqli_error($conn));
-}
-//取得结果
-$row = mysqli_fetch_array($retval, MYSQLI_ASSOC);
-$aid = $row['aid'];
-if (empty($aid) )
-{
-  echo "<script>alert('请检查登录的是否是管理员账户');history.go(-1);</script>";
-}
+if(empty($uid))
+  $uid = $uid_get;
 
-if (empty($cid) || empty($uid) || empty($plan_day)) {
+
+if (empty($cid) || empty($uid) || empty($plan_day)|| empty($cplandate)) {
   echo "<script>alert('数据输入不完整！');history.go(-1);</script>";
   exit;
 } 
+
+//连接数据库
+include "conn_db.php";
 
 //查询是否有这个用户
 $sql = "SELECT * from users where uid = '$uid'";
@@ -70,8 +59,8 @@ if($cstatus != '0')
 
 
 //数据插入
-$sql = "INSERT INTO `car_rental`.`car_rent` (`cid`, `uid`, `aid`, `plan_day`) 
-VALUES ('$cid', '$uid', '$aid', '$plan_day')";
+$sql = "INSERT INTO `car_rental`.`car_rent` (`cid`, `uid`, `plan_day` , `cplandate` , `aid`) 
+VALUES ('$cid', '$uid', '$plan_day', '$cplandate', '0')";
 $retval = mysqli_query($conn, $sql);
 if (!$retval) {
   die('无法读取数据: ' . mysqli_error($conn));
