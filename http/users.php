@@ -99,7 +99,7 @@ require 'admin/smarty/libs/Smarty.class.php';
             </a></li>
               <li><a href="users.php">首页</a></li>
               
-              <li><a href="users.php">订单查询</a></li>
+              <li><a href="rental.php">订单查询</a></li>
 	
               <li><a href="php/users_signout.php">退出登录</a></li>
             </ul>
