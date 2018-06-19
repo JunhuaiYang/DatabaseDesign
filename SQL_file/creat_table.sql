@@ -84,5 +84,56 @@ car_rent.uid = users.uid;
 
 SELECT * FROM car_rental.car where cstatus = '2';
 
+select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back) from car_rent;
 
+select fdate, fmoney from fixed_car;
 
+-- 创建视图
+-- 查询
+select fdate, IFNULL(money_a, 0), IFNULL((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
+from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
+union
+select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
+from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
+
+create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
+as
+select fdate, IFNULL(money_a, 0), IFNULL((deposit - deposit_back),0), ifnull((money_a + deposit - deposit_back),0), fmoney
+from fixed_car left join car_rent on car_rent.setin = fixed_car.fdate
+union
+select setin, money_a, (deposit - deposit_back), (money_a + deposit - deposit_back), ifnull(fmoney,0)
+from  car_rent left join fixed_car on car_rent.setin = fixed_car.fdate;
+
+select dates,rent_in, deposit_in, all_in, fixed_out, ( all_in - fixed_out)
+from date_table_one
+order by dates;
+
+create view date_table (dates, rent_in, deposit_in, all_in, fixed_out, profit)
+as
+select dates,rent_in, deposit_in, all_in, fixed_out, ( all_in - fixed_out)
+from date_table_one
+order by dates;
+
+select date_format(dates,'%Y-%m') ,sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
+from date_table
+group by date_format(dates,'%Y-%m')
+order by date_format(dates,'%Y-%m');
+
+create view month_table (dates, rent_in, deposit_in, all_in, fixed_out, profit)
+as
+select date_format(dates,'%Y-%m') ,sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
+from date_table
+group by date_format(dates,'%Y-%m')
+order by date_format(dates,'%Y-%m');
+
+create view year_table (dates, rent_in, deposit_in, all_in, fixed_out, profit)
+as
+select year(dates) ,sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
+from date_table
+group by year(dates)
+order by year(dates);
+
+create view sum_table (rent_in, deposit_in, all_in, fixed_out, profit)
+as
+select sum(rent_in), sum(deposit_in) , sum(all_in) , sum(fixed_out) , sum(profit)
+from date_table;

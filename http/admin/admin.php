@@ -628,8 +628,6 @@ $aname = $row['aname'];
             $smarty_user_edit->assign('temp', $temp_users);
             $smarty_user_edit->display('user_edit.tpl');
           }
-
-
           ?>
 			
         
@@ -716,7 +714,7 @@ $aname = $row['aname'];
         <!-- /.modal --> 
       </div>
 		
-		        <!-- 财务报表-日 -->
+		  <!-- 财务报表-日 -->
       <div class="tab-pane" id="form_day" role="tabpanel">
         <div class="check-div form-inline">
         </div>
@@ -727,18 +725,65 @@ $aname = $row['aname'];
             <div class="col-xs-2"> 租金收入 </div>
             <div class="col-xs-2"> 不退押金收入 </div>
             <div class="col-xs-2"> 总收入 </div>
-            <div class="col-xs-4"> 累计收入 </div>
+            <div class="col-xs-2"> 维修支出 </div>
+            <div class="col-xs-2"> 净利润 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-2 "> 2018 </div>
-            <div class="col-xs-2"> 56 </div>
-            <div class="col-xs-2"> 12 </div>
-            <div class="col-xs-2"> 456 </div>
-            <div class="col-xs-4"> 123 </div>
-              </div>
+            <?php
+            class table_out
+            {
+              public $dates;
+              public $rent_in;
+              public $deposit_in;
+              public $all_in;
+              public $fixed_out;
+              public $profit;
+
+              public $years;
+            }
+
+            $table_ = new table_out();
+            $smarty_table = new Smarty();
+
+            $find_view = "SELECT * FROM car_rental.date_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $table_->dates = $row['dates'];
+              $table_->rent_in = $row['rent_in'];
+              $table_->deposit_in = $row['deposit_in'];
+              $table_->all_in = $row['all_in'];
+              $table_->fixed_out = $row['fixed_out'];
+              $table_->profit = $row['profit'];
+
+              $smarty_table->assign('temp', $table_);
+              $smarty_table->display('table.tpl');
+            }
+
+            //再生成一栏求和
+            $find_view = "SELECT * FROM car_rental.sum_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            $row = mysqli_fetch_assoc($retval);
+            $table_->dates = "求和";
+            $table_->rent_in = $row['rent_in'];
+            $table_->deposit_in = $row['deposit_in'];
+            $table_->all_in = $row['all_in'];
+            $table_->fixed_out = $row['fixed_out'];
+            $table_->profit = $row['profit'];
+
+            $smarty_table->assign('temp', $table_);
+            $smarty_table->display('table_foot.tpl');
+
+            ?>
           </div>
         </div>
         
@@ -749,25 +794,57 @@ $aname = $row['aname'];
         <div class="check-div form-inline">
           </div>
 			
-			<div class="data-div">
+          <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
             <div class="col-xs-2 "> 日期 </div>
             <div class="col-xs-2"> 租金收入 </div>
             <div class="col-xs-2"> 不退押金收入 </div>
             <div class="col-xs-2"> 总收入 </div>
-            <div class="col-xs-4"> 累计收入 </div>
+            <div class="col-xs-2"> 维修支出 </div>
+            <div class="col-xs-2"> 净利润 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-2 "> 2018 </div>
-            <div class="col-xs-2"> 56 </div>
-            <div class="col-xs-2"> 12 </div>
-            <div class="col-xs-2"> 456 </div>
-            <div class="col-xs-4"> 123 </div>
-              </div>
+            <?php
+            $find_view = "SELECT * FROM car_rental.month_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $table_->dates = $row['dates'];
+              $table_->rent_in = $row['rent_in'];
+              $table_->deposit_in = $row['deposit_in'];
+              $table_->all_in = $row['all_in'];
+              $table_->fixed_out = $row['fixed_out'];
+              $table_->profit = $row['profit'];
+
+              $smarty_table->assign('temp', $table_);
+              $smarty_table->display('table.tpl');
+            }
+
+            //再生成一栏求和
+            $find_view = "SELECT * FROM car_rental.sum_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            $row = mysqli_fetch_assoc($retval);
+            $table_->dates = "求和";
+            $table_->rent_in = $row['rent_in'];
+            $table_->deposit_in = $row['deposit_in'];
+            $table_->all_in = $row['all_in'];
+            $table_->fixed_out = $row['fixed_out'];
+            $table_->profit = $row['profit'];
+
+            $smarty_table->assign('temp', $table_);
+            $smarty_table->display('table_foot.tpl');
+
+            ?>
           </div>
         </div>
 
@@ -778,25 +855,60 @@ $aname = $row['aname'];
         <div class="check-div form-inline">
           </div>
 			
-			<div class="data-div">
+          <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
             <div class="col-xs-2 "> 日期 </div>
             <div class="col-xs-2"> 租金收入 </div>
             <div class="col-xs-2"> 不退押金收入 </div>
             <div class="col-xs-2"> 总收入 </div>
-            <div class="col-xs-4"> 累计收入 </div>
+            <div class="col-xs-2"> 维修支出 </div>
+            <div class="col-xs-2"> 净利润 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-2 "> 2018 </div>
-            <div class="col-xs-2"> 56 </div>
-            <div class="col-xs-2"> 12 </div>
-            <div class="col-xs-2"> 456 </div>
-            <div class="col-xs-4"> 123 </div>
-              </div>
+            <?php
+            $find_view = "SELECT * FROM car_rental.quarter_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $t_dates = $row['dates'];
+              $table_->years = $row['years'];
+              $table_->rent_in = $row['rent_in'];
+              $table_->deposit_in = $row['deposit_in'];
+              $table_->all_in = $row['all_in'];
+              $table_->fixed_out = $row['fixed_out'];
+              $table_->profit = $row['profit'];
+
+              $table_->dates = $table_->years.'年第'.$t_dates.'季度';
+
+              $smarty_table->assign('temp', $table_);
+              $smarty_table->display('table.tpl');
+            }
+
+            //再生成一栏求和
+            $find_view = "SELECT * FROM car_rental.sum_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            $row = mysqli_fetch_assoc($retval);
+            $table_->dates = "求和";
+            $table_->rent_in = $row['rent_in'];
+            $table_->deposit_in = $row['deposit_in'];
+            $table_->all_in = $row['all_in'];
+            $table_->fixed_out = $row['fixed_out'];
+            $table_->profit = $row['profit'];
+
+            $smarty_table->assign('temp', $table_);
+            $smarty_table->display('table_foot.tpl');
+
+            ?>
           </div>
         </div>
 
@@ -807,25 +919,57 @@ $aname = $row['aname'];
         <div class="check-div form-inline">
           </div>
 			
-			<div class="data-div">
+          <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
             <div class="col-xs-2 "> 日期 </div>
             <div class="col-xs-2"> 租金收入 </div>
             <div class="col-xs-2"> 不退押金收入 </div>
             <div class="col-xs-2"> 总收入 </div>
-            <div class="col-xs-4"> 累计收入 </div>
+            <div class="col-xs-2"> 维修支出 </div>
+            <div class="col-xs-2"> 净利润 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-            <div class="col-xs-2 "> 2018 </div>
-            <div class="col-xs-2"> 56 </div>
-            <div class="col-xs-2"> 12 </div>
-            <div class="col-xs-2"> 456 </div>
-            <div class="col-xs-4"> 123 </div>
-              </div>
+            <?php
+            $find_view = "SELECT * FROM car_rental.year_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $table_->dates = $row['dates'];
+              $table_->rent_in = $row['rent_in'];
+              $table_->deposit_in = $row['deposit_in'];
+              $table_->all_in = $row['all_in'];
+              $table_->fixed_out = $row['fixed_out'];
+              $table_->profit = $row['profit'];
+
+              $smarty_table->assign('temp', $table_);
+              $smarty_table->display('table.tpl');
+            }
+
+            //再生成一栏求和
+            $find_view = "SELECT * FROM car_rental.sum_table;";
+            $retval = mysqli_query($conn, $find_view);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+
+            $row = mysqli_fetch_assoc($retval);
+            $table_->dates = "求和";
+            $table_->rent_in = $row['rent_in'];
+            $table_->deposit_in = $row['deposit_in'];
+            $table_->all_in = $row['all_in'];
+            $table_->fixed_out = $row['fixed_out'];
+            $table_->profit = $row['profit'];
+
+            $smarty_table->assign('temp', $table_);
+            $smarty_table->display('table_foot.tpl');
+
+            ?>
           </div>
         </div>
 
