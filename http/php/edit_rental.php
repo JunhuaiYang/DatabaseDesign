@@ -124,7 +124,8 @@ if($cstate_new < 8){
 }else{
   $cstatus = 0;
 }
-$sql = "UPDATE `car_rental`.`car` SET `cstate`='$cstate_new', `cstatus`='$cstatus' WHERE `cid`='$cid'";
+$sql = "UPDATE `car_rental`.`car` SET `cstate`='$cstate_new', `cstatus`='$cstatus' , `cnote`='$note' 
+WHERE `cid`='$cid'";
 $retval = mysqli_query($conn, $sql);
 if (!$retval) {
   die('无法读取数据: ' . mysqli_error($conn));

@@ -211,46 +211,46 @@ $aname = $row['aname'];
           <!-- 每一个弹窗-->
           <?php
             //各种弹出窗口处理
-            class car_reset
-            {
-              public $cid;
-              public $cplant;
-              public $cbrand;
-              public $cmodel;
-              public $cstate;
-              public $crent;
-              public $ccolor;
-              public $cvolume;
-              public $cdate;
-              public $coil;
-              public $cnote;
-            }
+          class car_reset
+          {
+            public $cid;
+            public $cplant;
+            public $cbrand;
+            public $cmodel;
+            public $cstate;
+            public $crent;
+            public $ccolor;
+            public $cvolume;
+            public $cdate;
+            public $coil;
+            public $cnote;
+          }
 
-            $temp_car = new car_reset();
+          $temp_car = new car_reset();
 
-            $sarch_car = "SELECT * FROM car_rental.car";
+          $sarch_car = "SELECT * FROM car_rental.car";
 
-            $retval = mysqli_query($conn, $sarch_car);
-            if (!$retval) {
-              die('无法读取数据: ' . mysqli_error($conn));
-            }
+          $retval = mysqli_query($conn, $sarch_car);
+          if (!$retval) {
+            die('无法读取数据: ' . mysqli_error($conn));
+          }
 
-            while ($row = mysqli_fetch_assoc($retval)) {
-              $temp_car->cid = $row['cid'];
-              $temp_car->cplant = $row['cplant'];
-              $temp_car->cbrand = $row['cbrand'];
-              $temp_car->cmodel = $row['cmodel'];
-              $temp_car->cstate = $row['cstate'];
-              $temp_car->crent = $row['crent'];
-              $temp_car->ccolor = $row['ccolor'];
-              $temp_car->cvolume = $row['cvolume'];
-              $temp_car->cdate = $row['cdate'];
-              $temp_car->coil = $row['coil'];
-              $temp_car->cnote = $row['cnote'];
+          while ($row = mysqli_fetch_assoc($retval)) {
+            $temp_car->cid = $row['cid'];
+            $temp_car->cplant = $row['cplant'];
+            $temp_car->cbrand = $row['cbrand'];
+            $temp_car->cmodel = $row['cmodel'];
+            $temp_car->cstate = $row['cstate'];
+            $temp_car->crent = $row['crent'];
+            $temp_car->ccolor = $row['ccolor'];
+            $temp_car->cvolume = $row['cvolume'];
+            $temp_car->cdate = $row['cdate'];
+            $temp_car->coil = $row['coil'];
+            $temp_car->cnote = $row['cnote'];
 
-              $smarty_new_car->assign('temp', $temp_car);
-              $smarty_new_car->display('car_edit.tpl');
-            }
+            $smarty_new_car->assign('temp', $temp_car);
+            $smarty_new_car->display('car_edit.tpl');
+          }
 
           ?>
 			
@@ -375,7 +375,7 @@ $aname = $row['aname'];
             <?php
               //生成每一行订单信息
 
-              class rental
+            class rental
             {
               public $contractid;
               public $cid;
@@ -393,7 +393,7 @@ $aname = $row['aname'];
               public $status;
               public $plan_day;
               public $real_day;
-              
+
               public $uname;
               public $cbrand;
               public $cmodel;
@@ -416,27 +416,27 @@ $aname = $row['aname'];
             }
 
             while ($row = mysqli_fetch_assoc($retval)) {
-              $temp_rental->contractid  = $row['contractid'];
-              $temp_rental->cid  = $row['cid'];
-              $temp_rental->uid  = $row['uid'];
-              $temp_rental->aid  = $row['aid'];
-              $temp_rental->deposit  = $row['deposit'];
-              $temp_rental->money_a  = $row['money_a'];
+              $temp_rental->contractid = $row['contractid'];
+              $temp_rental->cid = $row['cid'];
+              $temp_rental->uid = $row['uid'];
+              $temp_rental->aid = $row['aid'];
+              $temp_rental->deposit = $row['deposit'];
+              $temp_rental->money_a = $row['money_a'];
               $temp_rental->setout = $row['setout'];
-              $temp_rental->setin  = $row['setin'];
-              $temp_rental->state  = $row['state'];
-              $temp_rental->deposit_back  = $row['deposit_back'];
-              $temp_rental->fine  = $row['fine'];
-              $temp_rental->note  = $row['note'];
-              $temp_rental->status  = $row['status'];
-              $temp_rental->plan_day  = $row['plan_day'];
-              $temp_rental->uname  = $row['uname'];
-              $temp_rental->cbrand  = $row['cbrand'];
-              $temp_rental->cmodel  = $row['cmodel'];
+              $temp_rental->setin = $row['setin'];
+              $temp_rental->state = $row['state'];
+              $temp_rental->deposit_back = $row['deposit_back'];
+              $temp_rental->fine = $row['fine'];
+              $temp_rental->note = $row['note'];
+              $temp_rental->status = $row['status'];
+              $temp_rental->plan_day = $row['plan_day'];
+              $temp_rental->uname = $row['uname'];
+              $temp_rental->cbrand = $row['cbrand'];
+              $temp_rental->cmodel = $row['cmodel'];
               $temp_rental->cplant = $row['cplant'];
-              $temp_rental->username  = $row['username'];
-              $temp_rental->aname  = $row['aname'];
-              $temp_rental->uidnum  = $row['uidnum'];
+              $temp_rental->username = $row['username'];
+              $temp_rental->aname = $row['aname'];
+              $temp_rental->uidnum = $row['uidnum'];
 
               $smarty_rental->assign('temp', $temp_rental);
               $smarty_rental->display('rental_row.tpl');
@@ -449,40 +449,40 @@ $aname = $row['aname'];
           
            <!--生成各种弹窗-->
            <?php
-             $retval = mysqli_query($conn, $sarch_rental);
-             if (!$retval) {
-               die('无法读取数据: ' . mysqli_error($conn));
-             }
+          $retval = mysqli_query($conn, $sarch_rental);
+          if (!$retval) {
+            die('无法读取数据: ' . mysqli_error($conn));
+          }
 
-            while ($row = mysqli_fetch_assoc($retval)) {
-              $temp_rental->contractid  = $row['contractid'];
-              $temp_rental->cid  = $row['cid'];
-              $temp_rental->uid  = $row['uid'];
-              $temp_rental->aid  = $row['aid'];
-              $temp_rental->deposit  = $row['deposit'];
-              $temp_rental->money_b  = $row['money_b'];
-              $temp_rental->money_a  = $row['money_a'];
-              $temp_rental->setout = $row['setout'];
-              $temp_rental->setin  = $row['setin'];
-              $temp_rental->state  = $row['state'];
-              $temp_rental->deposit_back  = $row['deposit_back'];
-              $temp_rental->fine  = $row['fine'];
-              $temp_rental->note  = $row['note'];
-              $temp_rental->status  = $row['status'];
-              $temp_rental->plan_day  = $row['plan_day'];
-              $temp_rental->uname  = $row['uname'];
-              $temp_rental->cbrand  = $row['cbrand'];
-              $temp_rental->cmodel  = $row['cmodel'];
-              $temp_rental->cplant = $row['cplant'];
-              $temp_rental->username  = $row['username'];
-              $temp_rental->aname  = $row['aname'];
-              $temp_rental->real_day  = $row['real_day'];
+          while ($row = mysqli_fetch_assoc($retval)) {
+            $temp_rental->contractid = $row['contractid'];
+            $temp_rental->cid = $row['cid'];
+            $temp_rental->uid = $row['uid'];
+            $temp_rental->aid = $row['aid'];
+            $temp_rental->deposit = $row['deposit'];
+            $temp_rental->money_b = $row['money_b'];
+            $temp_rental->money_a = $row['money_a'];
+            $temp_rental->setout = $row['setout'];
+            $temp_rental->setin = $row['setin'];
+            $temp_rental->state = $row['state'];
+            $temp_rental->deposit_back = $row['deposit_back'];
+            $temp_rental->fine = $row['fine'];
+            $temp_rental->note = $row['note'];
+            $temp_rental->status = $row['status'];
+            $temp_rental->plan_day = $row['plan_day'];
+            $temp_rental->uname = $row['uname'];
+            $temp_rental->cbrand = $row['cbrand'];
+            $temp_rental->cmodel = $row['cmodel'];
+            $temp_rental->cplant = $row['cplant'];
+            $temp_rental->username = $row['username'];
+            $temp_rental->aname = $row['aname'];
+            $temp_rental->real_day = $row['real_day'];
 
-              $smarty_rental->assign('temp', $temp_rental);
-              $smarty_rental->display('rental_edit.tpl');
-            }
+            $smarty_rental->assign('temp', $temp_rental);
+            $smarty_rental->display('rental_edit.tpl');
+          }
 
-           ?>
+          ?>
 
         
         <!--弹出窗口 添加订单-->
@@ -557,44 +557,44 @@ $aname = $row['aname'];
               //生成用户行
 
               //申明对象
-              class user_show
-              {
-                public $uid;
-                public $username;
-                public $uname;
-                public $utel;
-                public $isvip;
-                public $ucredit;
+            class user_show
+            {
+              public $uid;
+              public $username;
+              public $uname;
+              public $utel;
+              public $isvip;
+              public $ucredit;
 
-                public $ulicese;
-                public $uage;
-                public $uidnum;
-              }
+              public $ulicese;
+              public $uage;
+              public $uidnum;
+            }
 
-              $smarty_user = new Smarty();
+            $smarty_user = new Smarty();
 
               //数据库操作
-              $sarch_user = "SELECT * FROM car_rental.users";
+            $sarch_user = "SELECT * FROM car_rental.users";
 
-              $retval = mysqli_query($conn, $sarch_user);
-              if (!$retval) {
-                die('无法读取数据: ' . mysqli_error($conn));
-              }
+            $retval = mysqli_query($conn, $sarch_user);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
 
-              $temp_users_row = new user_show();
+            $temp_users_row = new user_show();
 
               //模板  
-              while ($row = mysqli_fetch_assoc($retval)) {
-                $temp_users_row->uid = $row['uid'];
-                $temp_users_row->username = $row['username'];
-                $temp_users_row->uname = $row['uname'];
-                $temp_users_row->utel = $row['utel'];
-                $temp_users_row->isvip = $row['isvip'];
-                $temp_users_row->ucredit = $row['ucredit'];
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_users_row->uid = $row['uid'];
+              $temp_users_row->username = $row['username'];
+              $temp_users_row->uname = $row['uname'];
+              $temp_users_row->utel = $row['utel'];
+              $temp_users_row->isvip = $row['isvip'];
+              $temp_users_row->ucredit = $row['ucredit'];
 
-                $smarty_user->assign('temp', $temp_users_row);
-                $smarty_user->display('user_row.tpl');
-              }
+              $smarty_user->assign('temp', $temp_users_row);
+              $smarty_user->display('user_row.tpl');
+            }
 
             ?>
 
@@ -603,31 +603,31 @@ $aname = $row['aname'];
 
           <?php
             //生成各个弹窗
-            $smarty_user_edit = new Smarty();
-            $temp_users = new user_show();
+          $smarty_user_edit = new Smarty();
+          $temp_users = new user_show();
 
             //数据库操作
-            $sarch_user = "SELECT * FROM car_rental.users";
-            $retval = mysqli_query($conn, $sarch_user);
-            if (!$retval) {
-              die('无法读取数据: ' . mysqli_error($conn));
-            }
+          $sarch_user = "SELECT * FROM car_rental.users";
+          $retval = mysqli_query($conn, $sarch_user);
+          if (!$retval) {
+            die('无法读取数据: ' . mysqli_error($conn));
+          }
             //模板  
-            while ($row = mysqli_fetch_assoc($retval)) {
-              $temp_users->uid = $row['uid'];
-              $temp_users->username = $row['username'];
-              $temp_users->uname = $row['uname'];
-              $temp_users->utel = $row['utel'];
-              $temp_users->isvip = $row['isvip'];
-              $temp_users->ucredit = $row['ucredit'];
+          while ($row = mysqli_fetch_assoc($retval)) {
+            $temp_users->uid = $row['uid'];
+            $temp_users->username = $row['username'];
+            $temp_users->uname = $row['uname'];
+            $temp_users->utel = $row['utel'];
+            $temp_users->isvip = $row['isvip'];
+            $temp_users->ucredit = $row['ucredit'];
 
-              $temp_users->ulicese = $row['ulicese'];
-              $temp_users->uage = $row['uage'];
-              $temp_users->uidnum = $row['uidnum'];
+            $temp_users->ulicese = $row['ulicese'];
+            $temp_users->uage = $row['uage'];
+            $temp_users->uidnum = $row['uidnum'];
 
-              $smarty_user_edit->assign('temp', $temp_users);
-              $smarty_user_edit->display('user_edit.tpl');
-            }
+            $smarty_user_edit->assign('temp', $temp_users);
+            $smarty_user_edit->display('user_edit.tpl');
+          }
 
 
           ?>
@@ -642,53 +642,77 @@ $aname = $row['aname'];
         <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
-            <div class="col-xs-1 "> 编号 </div>
-			<div class="col-xs-1 "> 车辆编号 </div>
+			      <div class="col-xs-1 "> 车辆编号 </div>
             <div class="col-xs-2"> 车牌号 </div>
-            <div class="col-xs-2"> 车辆型号 </div>
+            <div class="col-xs-1"> 车辆品牌 </div>
+            <div class="col-xs-1"> 车辆型号 </div>
             <div class="col-xs-1"> 车辆状况 </div>
             <div class="col-xs-4"> 备注 </div>
 
-            <div class="col-xs-1"> 操作 </div>
+            <div class="col-xs-2"> 操作 </div>
           </div>
             <div class="tablebody"> 
             
             <!-- 每一行-->
-            <div class="row">
-                <div class="col-xs-1 "> 1 </div>
-                <div class="col-xs-1"> sdf </div>
-                <div class="col-xs-2"> sdf </div>
-                <div class="col-xs-2"> 13688889999 </div>
-				<div class="col-xs-1"> sdf </div>
-                <div class="col-xs-4"> 875 </div>
-                <!--					按钮-->
-                <div class="col-xs-1">
-                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#hasFixed">已维修</button>
-              </div>
-              </div>
+            <?php
+
+              //格式化生成
+            $temp_car = new car_reset();
+            $sarch_car = "SELECT * FROM car_rental.car where cstatus = '2'";
+
+            $retval = mysqli_query($conn, $sarch_car);
+            if (!$retval) {
+              die('无法读取数据: ' . mysqli_error($conn));
+            }
+            while ($row = mysqli_fetch_assoc($retval)) {
+              $temp_car->cid = $row['cid'];
+              $temp_car->cplant = $row['cplant'];
+              $temp_car->cbrand = $row['cbrand'];
+              $temp_car->cmodel = $row['cmodel'];
+              $temp_car->cstate = $row['cstate'];
+              $temp_car->crent = $row['crent'];
+              $temp_car->ccolor = $row['ccolor'];
+              $temp_car->cvolume = $row['cvolume'];
+              $temp_car->cdate = $row['cdate'];
+              $temp_car->coil = $row['coil'];
+              $temp_car->cnote = $row['cnote'];
+
+              $smarty_new_car->assign('temp', $temp_car);
+              $smarty_new_car->display('fix_row.tpl');
+            }
+
+            ?>
+
           </div>
           </div>
 
         <!--弹出已维修窗口-->
-        <div class="modal fade" id="hasFixed" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
-              </div>
-                <div class="modal-body">
-                <div class="container-fluid"> 确定已经对该车辆完成维修？</div>
-              </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-danger">保 存</button>
-              </div>
-              </div>
-            <!-- /.modal-content --> 
-          </div>
-            <!-- /.modal-dialog --> 
-          </div>
+        <?php
+                        //格式化生成
+        $temp_car = new car_reset();
+        $sarch_car = "SELECT * FROM car_rental.car where cstatus = '2'";
+
+        $retval = mysqli_query($conn, $sarch_car);
+        if (!$retval) {
+          die('无法读取数据: ' . mysqli_error($conn));
+        }
+        while ($row = mysqli_fetch_assoc($retval)) {
+          $temp_car->cid = $row['cid'];
+          $temp_car->cplant = $row['cplant'];
+          $temp_car->cbrand = $row['cbrand'];
+          $temp_car->cmodel = $row['cmodel'];
+          $temp_car->cstate = $row['cstate'];
+          $temp_car->crent = $row['crent'];
+          $temp_car->ccolor = $row['ccolor'];
+          $temp_car->cvolume = $row['cvolume'];
+          $temp_car->cdate = $row['cdate'];
+          $temp_car->coil = $row['coil'];
+          $temp_car->cnote = $row['cnote'];
+
+          $smarty_new_car->assign('temp', $temp_car);
+          $smarty_new_car->display('fixed.tpl');
+        }
+        ?>
         <!-- /.modal --> 
       </div>
 		

@@ -68,9 +68,21 @@ create table car_rent(
     foreign key(aid) references admin(aid)
     );
     
+create table fixed_car(
+	fid int(5),
+    cid int(5) not null,
+    fdate date not null,
+    fmoney int not null,
+    primary key(fid),
+    foreign key(cid) references car(cid)
+    );
+	
+    
 select * from car_rent, car, users, admin
 where car_rent.aid = admin.aid and car_rent.cid = car.cid and
 car_rent.uid = users.uid;
+
+SELECT * FROM car_rental.car where cstatus = '2';
 
 
 
