@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-19 02:53:37
+/* Smarty version 3.1.32, created on 2018-06-19 09:46:57
   from '/var/www/html/admin/templates/rental_edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b27ffb16c1f23_53349331',
+  'unifunc' => 'content_5b286091249321_12503419',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bec0bb3070e54013e2e12a130750df89bbf7250d' => 
     array (
       0 => '/var/www/html/admin/templates/rental_edit.tpl',
-      1 => 1529347148,
+      1 => 1529372811,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b27ffb16c1f23_53349331 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b286091249321_12503419 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--弹出窗口 确认租车-->
 <div class="modal fade" id="sureSetout_<?php echo $_smarty_tpl->tpl_vars['temp']->value->contractid;?>
 " role="dialog" aria-labelledby="gridSystemModalLabel">
@@ -305,91 +305,85 @@ function content_5b27ffb16c1f23_53349331 (Smarty_Internal_Template $_smarty_tpl)
         <div class="container-fluid">
           <form method="post" action="../php/edit_rental.php" class="form-horizontal">
             <div class="form-group">
-                <label for="contractid" class="col-xs-4 control-label">合同ID：</label>
+                <label for="contractid" class="col-xs-4 control-label">*合同ID：</label>
                 <div class="col-xs-7 ">
                   <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->contractid;?>
 " name="contractid" id="contractid" placeholder="">
                 </div>
               </div>
             <div class="form-group">
-              <label for="cid" class="col-xs-4 control-label">车辆ID：</label>
+              <label for="cid" class="col-xs-4 control-label">*车辆ID：</label>
               <div class="col-xs-7 ">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
 " name="cid" id="cid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="uid" class="col-xs-4 control-label">用户ID：</label>
+              <label for="uid" class="col-xs-4 control-label">*用户ID：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->uid;?>
 " name="uid" id="uid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="aid" class="col-xs-4 control-label">经手人：</label>
+              <label for="aid" class="col-xs-4 control-label">*经手人ID：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->aid;?>
 " name="aid" id="aid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="status" class="col-xs-4 control-label">订单状态：</label>
+              <label for="status" class="col-xs-4 control-label">*订单状态：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->status;?>
 " name="status" id="status" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="deposit" class="col-xs-4 control-label">押金：</label>
+              <label for="deposit" class="col-xs-4 control-label">*押金：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->deposit;?>
 " name="deposit" id="deposit" placeholder="">
               </div>
             </div>
             <div class="form-group">
-                <label for="money_b" class="col-xs-4 control-label">预定金额：</label>
+                <label for="plan_day" class="col-xs-4 control-label">*预定天数：</label>
                 <div class="col-xs-7">
-                    <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->money_b;?>
-" name="money_b" id="money_b" placeholder="">
+                    <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->plan_day;?>
+" name="plan_day" id="plan_day" placeholder="">
                 </div>
               </div>
+
             <div class="form-group">
-                <label for="money_a" class="col-xs-4 control-label">订单金额：</label>
-                <div class="col-xs-7">
-                    <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->money_a;?>
-" name="money_a" id="money_a" placeholder="">
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="setout" class="col-xs-4 control-label">出车时间：</label>
+              <label for="setout" class="col-xs-4 control-label">*出车时间：</label>
               <div class="col-xs-7">
-                <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->setout;?>
+                <input type="date" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->setout;?>
 " name="setout" id="setout" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="setin" class="col-xs-4 control-label">还车时间：</label>
+              <label for="setin" class="col-xs-4 control-label">*还车时间：</label>
               <div class="col-xs-7">
-                <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->setin;?>
+                <input type="date" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->setin;?>
 " name="setin" id="setin" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
+              <label for="state" class="col-xs-4 control-label">*车辆损坏情况：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->state;?>
 " name="state" id="state" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
+              <label for="deposit_back" class="col-xs-4 control-label">*押金退还金额：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->deposit_back;?>
 " name="deposit_back" id="deposit_back" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
+              <label for="fine" class="col-xs-4 control-label">*交通违规罚款：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->fine;?>
 " name="fine" id="fine" placeholder="">
@@ -433,10 +427,10 @@ function content_5b27ffb16c1f23_53349331 (Smarty_Internal_Template $_smarty_tpl)
               <div class="container-fluid"> 确定要删除该订单？删除后不可恢复！ </div>
             </div>
             <div class="form-group">
-              <label for="cid" class="col-xs-3 control-label">订单ID：</label>
+              <label for="contractid" class="col-xs-3 control-label">订单ID：</label>
               <div class="col-xs-8">
                 <input type="" class="form-control input-sm duiqi" value="<?php echo $_smarty_tpl->tpl_vars['temp']->value->contractid;?>
-" name="cid" id="cid" placeholder="">
+" name="contractid" id="contractid" placeholder="">
               </div>
             </div>
             <div class="modal-footer">

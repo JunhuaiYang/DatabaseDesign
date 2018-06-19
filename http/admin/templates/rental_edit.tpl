@@ -257,79 +257,74 @@
         <div class="container-fluid">
           <form method="post" action="../php/edit_rental.php" class="form-horizontal">
             <div class="form-group">
-                <label for="contractid" class="col-xs-4 control-label">合同ID：</label>
+                <label for="contractid" class="col-xs-4 control-label">*合同ID：</label>
                 <div class="col-xs-7 ">
                   <input type="" class="form-control input-sm duiqi" value="{$temp->contractid}" name="contractid" id="contractid" placeholder="">
                 </div>
               </div>
             <div class="form-group">
-              <label for="cid" class="col-xs-4 control-label">车辆ID：</label>
+              <label for="cid" class="col-xs-4 control-label">*车辆ID：</label>
               <div class="col-xs-7 ">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->cid}" name="cid" id="cid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="uid" class="col-xs-4 control-label">用户ID：</label>
+              <label for="uid" class="col-xs-4 control-label">*用户ID：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->uid}" name="uid" id="uid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="aid" class="col-xs-4 control-label">经手人：</label>
+              <label for="aid" class="col-xs-4 control-label">*经手人ID：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->aid}" name="aid" id="aid" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="status" class="col-xs-4 control-label">订单状态：</label>
+              <label for="status" class="col-xs-4 control-label">*订单状态：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->status}" name="status" id="status" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="deposit" class="col-xs-4 control-label">押金：</label>
+              <label for="deposit" class="col-xs-4 control-label">*押金：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->deposit}" name="deposit" id="deposit" placeholder="">
               </div>
             </div>
             <div class="form-group">
-                <label for="money_b" class="col-xs-4 control-label">预定金额：</label>
+                <label for="plan_day" class="col-xs-4 control-label">*预定天数：</label>
                 <div class="col-xs-7">
-                    <input type="" class="form-control input-sm duiqi" value="{$temp->money_b}" name="money_b" id="money_b" placeholder="">
+                    <input type="" class="form-control input-sm duiqi" value="{$temp->plan_day}" name="plan_day" id="plan_day" placeholder="">
                 </div>
               </div>
+
             <div class="form-group">
-                <label for="money_a" class="col-xs-4 control-label">订单金额：</label>
-                <div class="col-xs-7">
-                    <input type="" class="form-control input-sm duiqi" value="{$temp->money_a}" name="money_a" id="money_a" placeholder="">
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="setout" class="col-xs-4 control-label">出车时间：</label>
+              <label for="setout" class="col-xs-4 control-label">*出车时间：</label>
               <div class="col-xs-7">
-                <input type="" class="form-control input-sm duiqi" value="{$temp->setout}" name="setout" id="setout" placeholder="">
+                <input type="date" class="form-control input-sm duiqi" value="{$temp->setout}" name="setout" id="setout" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="setin" class="col-xs-4 control-label">还车时间：</label>
+              <label for="setin" class="col-xs-4 control-label">*还车时间：</label>
               <div class="col-xs-7">
-                <input type="" class="form-control input-sm duiqi" value="{$temp->setin}" name="setin" id="setin" placeholder="">
+                <input type="date" class="form-control input-sm duiqi" value="{$temp->setin}" name="setin" id="setin" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="state" class="col-xs-4 control-label">车辆损坏情况：</label>
+              <label for="state" class="col-xs-4 control-label">*车辆损坏情况：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->state}" name="state" id="state" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="deposit_back" class="col-xs-4 control-label">押金退还金额：</label>
+              <label for="deposit_back" class="col-xs-4 control-label">*押金退还金额：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->deposit_back}" name="deposit_back" id="deposit_back" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="fine" class="col-xs-4 control-label">交通违规罚款：</label>
+              <label for="fine" class="col-xs-4 control-label">*交通违规罚款：</label>
               <div class="col-xs-7">
                 <input type="" class="form-control input-sm duiqi" value="{$temp->fine}" name="fine" id="fine" placeholder="">
               </div>
@@ -370,9 +365,9 @@
               <div class="container-fluid"> 确定要删除该订单？删除后不可恢复！ </div>
             </div>
             <div class="form-group">
-              <label for="cid" class="col-xs-3 control-label">订单ID：</label>
+              <label for="contractid" class="col-xs-3 control-label">订单ID：</label>
               <div class="col-xs-8">
-                <input type="" class="form-control input-sm duiqi" value="{$temp->contractid}" name="cid" id="cid" placeholder="">
+                <input type="" class="form-control input-sm duiqi" value="{$temp->contractid}" name="contractid" id="contractid" placeholder="">
               </div>
             </div>
             <div class="modal-footer">

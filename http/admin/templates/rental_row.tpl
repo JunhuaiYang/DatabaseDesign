@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-xs-1 "> {$temp->contractid} </div>
   <div class="col-xs-1 "> {$temp->uname} </div>
+  <div class="col-xs-1 "> {$temp->cid} </div>
   <div class="col-xs-2">  {$temp->cplant} </div>
   <div class="col-xs-1 "> {$temp->cbrand} </div>
   <div class="col-xs-1 "> {$temp->cmodel} </div>
-  <div class="col-xs-2 "> {$temp->aname} </div>
+  <div class="col-xs-1 "> {$temp->aname} </div>
 
   <div class="col-xs-1 "> 
     {if $temp->status eq '0'}

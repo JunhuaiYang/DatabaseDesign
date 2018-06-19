@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-18 21:34:27
+/* Smarty version 3.1.32, created on 2018-06-19 09:11:46
   from '/var/www/html/admin/templates/rental_row.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b27b4e32c3151_89918875',
+  'unifunc' => 'content_5b285852af6ad3_68696640',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df4250dce802e706a13ef8507a301d443786bdbc' => 
     array (
       0 => '/var/www/html/admin/templates/rental_row.tpl',
-      1 => 1529328861,
+      1 => 1529370702,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b27b4e32c3151_89918875 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b285852af6ad3_68696640 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
   <div class="col-xs-1 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->contractid;?>
  </div>
   <div class="col-xs-1 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->uname;?>
+ </div>
+  <div class="col-xs-1 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->cid;?>
  </div>
   <div class="col-xs-2">  <?php echo $_smarty_tpl->tpl_vars['temp']->value->cplant;?>
  </div>
@@ -32,7 +34,7 @@ function content_5b27b4e32c3151_89918875 (Smarty_Internal_Template $_smarty_tpl)
  </div>
   <div class="col-xs-1 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->cmodel;?>
  </div>
-  <div class="col-xs-2 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->aname;?>
+  <div class="col-xs-1 "> <?php echo $_smarty_tpl->tpl_vars['temp']->value->aname;?>
  </div>
 
   <div class="col-xs-1 "> 

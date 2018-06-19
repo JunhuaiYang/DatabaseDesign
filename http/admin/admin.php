@@ -360,10 +360,11 @@ $aname = $row['aname'];
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->
             <div class="col-xs-1 "> 订单编号 </div>
             <div class="col-xs-1"> 用户姓名 </div>
+            <div class="col-xs-1"> 车辆ID </div>
             <div class="col-xs-2"> 车牌号 </div>
             <div class="col-xs-1"> 车辆品牌 </div>
             <div class="col-xs-1"> 车辆型号 </div>
-            <div class="col-xs-2"> 经手人 </div>
+            <div class="col-xs-1"> 经手人 </div>
             <div class="col-xs-1"> 订单状态 </div>
             <!--3个宽度来操作-->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 操作 </div>
@@ -463,7 +464,7 @@ $aname = $row['aname'];
               $temp_rental->money_a  = $row['money_a'];
               $temp_rental->setout = $row['setout'];
               $temp_rental->setin  = $row['setin'];
-              $temp_rental->cstate  = $row['state'];
+              $temp_rental->state  = $row['state'];
               $temp_rental->deposit_back  = $row['deposit_back'];
               $temp_rental->fine  = $row['fine'];
               $temp_rental->note  = $row['note'];

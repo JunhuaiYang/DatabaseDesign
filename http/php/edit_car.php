@@ -39,10 +39,17 @@
   }
   // echo '找到！';
 
+  //更新车辆状态
+  if($cstate < 8){
+    $cstatus = 2;
+  }else{
+    $cstatus = 0;
+  }
+
   //更新内容
   $sql_update = "UPDATE `car_rental`.`car` SET
    `cplant`='$cplant', `cbrand`='$cbrand', `cmodel`='$cmodel', `ccolor`='$ccolor', `cvolume`='$cvolume',
-    `cdate`='$cdate', `coil`='$coil', `cstate`='$cstate', `crent`='$crent', `cnote`='$cnote'
+    `cdate`='$cdate', `coil`='$coil', `cstate`='$cstate', `crent`='$crent', `cnote`='$cnote', `cstatus`='$cstatus'
     WHERE `cid`='$cid'";
 
   $retval = mysqli_query($conn, $sql_update);
