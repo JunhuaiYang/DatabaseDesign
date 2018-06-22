@@ -157,7 +157,8 @@ order by quarter(dates), year(dates);
 
 select  * from car_rent, car, users, admin
             where car_rent.cid = car.cid and
-            car_rent.uid = users.uid and admin.aid = car_rent.aid;
+            car_rent.uid = users.uid and admin.aid = car_rent.aid
+            order by status, contractid;
             
 -- 新
 create view date_table_one (dates, rent_in, deposit_in, all_in, fixed_out)
