@@ -6,15 +6,14 @@ create table users(
 	ulicese varchar(15) not null,
 	uage int,
 	isvip varchar(2) not null,
+	ucredit int default '50',
     primary key(uid)
     );
 
 create table users_login(
-	uid int(5),
 	username varchar(20) not null,
 	upassword varchar(20) not null,
-    primary key(uid),
-    foreign key(uid) references  users(uid)
+    primary key(username),
     );
     
 create table car(
@@ -29,6 +28,7 @@ create table car(
 	cstate int not null,
 	crent int not null,
 	cnote varchar(100),
+	cstatus int not null,
     primary key(cid)
     );
     
@@ -44,7 +44,6 @@ create table admin_login(
 	ausername varchar(20) not null,
 	apassword varchar(20) not null,
     primary key(ausername)
-    -- foreign key(ausername) references admin(ausername)
     );
     
 create table car_rent(
@@ -62,6 +61,10 @@ create table car_rent(
 	deposit_back int,
 	fine int,
 	note varchar(100),
+	status
+	plan_day int,
+	real_day int,
+	cplandate date,
     primary key(contractid),
     foreign key(cid) references car(cid),
     foreign key(uid) references users(uid),
