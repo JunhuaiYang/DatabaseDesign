@@ -44,7 +44,7 @@ function signup(){
     }else if(pwd!=repwd){  
           alert("密码和重复密码不同，请重新输入！");  
           return false
-    }else if(tel.length==11){  
+    }else if(tel.length!=11){  
           alert("手机号码格式不正确！长度为11");  
           return false
     }else if(name.length<2||name.length>6){  
