@@ -35,6 +35,8 @@ $_SESSION['uname'] = $uname;
 
 //smarty
 require 'admin/smarty/libs/Smarty.class.php';
+//记录ip
+require_once "comm_function.php";
 
 
 ?>
