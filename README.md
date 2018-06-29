@@ -11,6 +11,8 @@ github项目地址: https://github.com/JunhuaiYang/DatabaseDesign
 
 ## 题目：租车管理系统
 
+<b> 开发架构： </b> B/S
+
 <b> 开发语言： </b> HTML/CSS + JS + PHP
 
 <b> 运行环境： </b> Ubuntu16.04 LTS + MySQL + Apache
