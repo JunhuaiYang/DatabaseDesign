@@ -153,7 +153,7 @@ function clientlog() {
   $city = $rawdata_position['data']['city'];
   $nettype = $rawdata_position['data']['isp'];
  
-  $time = date ( 'y-m-d h:m:s' );
+  $time = date ( 'y-m-d h:i:s' );   //分是i
   $data = "来自{$country} {$province} {$city }{$nettype} 的客户端: {$client_info},IP为:{$clientip},在{$time}时刻访问了{$_SERVER['PHP_SELF']}文件！\r\n";
   $filename = "./log.log";
   if (! file_exists ( $filename )) {
