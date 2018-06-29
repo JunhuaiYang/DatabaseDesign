@@ -2,7 +2,6 @@
 
 //车辆信息录入检测检验
 function new_car() {
-      alert("请确认是否有空缺项！");
       var cplant = $("#cplant").val();
       var cbrand = $("#cbrand").val();
       var cmodel = $("#cmodel").val();
