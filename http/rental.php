@@ -116,6 +116,9 @@ require 'admin/smarty/libs/Smarty.class.php';
 		
 <!-- 订单信息 -->
         <div class="tab-pane active" id="order" role="tabpanel">
+        <div class="check-div form-inline">
+          <a href="users.php"><button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addOrder">返回</button></a>
+          </div>
         <div class="data-div">
             <div class="row tableHeader"> 
             <!--	col-lg-几就是几个宽度，bootstrap里面定义的-->

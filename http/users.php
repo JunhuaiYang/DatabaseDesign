@@ -213,8 +213,6 @@ clientlog();
               $smarty_new_car->assign('temp', $temp_car);
               $smarty_new_car->display('user_car.tpl');
             }
-
-
             ?>
           </div>
           </div>
