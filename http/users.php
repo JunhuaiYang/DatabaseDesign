@@ -228,7 +228,7 @@ clientlog();
       <div class="col-xs-4">
         <div class="b-footer__company wow fadeInLeft" data-wow-delay="0.3s">
           <div class="b-nav__logo">
-            <h3><a href="index.html">格里芬<span>租车</span></a></h3>
+            <h3><a href="index.php">格里芬<span>租车</span></a></h3>
           </div>
           <p>Copyright &copy; 2018.YangJunhuai All rights reserved.</p>
         </div>
