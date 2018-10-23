@@ -2,7 +2,7 @@
   //记录ip
   require_once "../php/get_ip.php";
   //日志
-  clientlog();
+  // clientlog();
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group"> </div>
         <div class="form-group">
-          <p>没有注册？ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="../signup.html"> 去注册！</a></p>
+          <p>没有管理员账号？ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href=""> 请联系超级管理员</a></p>
         </div>
         <div class="form-group">
           <input type="submit"  onclick="return signin()" value="登录" class="btn btn-primary">

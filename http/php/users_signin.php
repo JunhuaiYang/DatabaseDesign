@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  用户登录
+ * 与数据库中的用户表比对并设置SESSION变量
+ */
+
     //登录各种检测
     $username = $_POST['username']; //trim可以去头尾空格
     $password = $_POST['password'];

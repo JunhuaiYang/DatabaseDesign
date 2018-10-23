@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  在订单管理中删除订单
+ * 在数据库中删除该订单
+ */
+
   //删除订单
 $contractid = $_POST['contractid'];
 

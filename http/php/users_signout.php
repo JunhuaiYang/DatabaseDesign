@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  用户登出
+ *  并销毁session
+ */
+
   //销毁session
   session_start();
   session_unset();

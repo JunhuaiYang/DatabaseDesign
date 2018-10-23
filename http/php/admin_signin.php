@@ -1,4 +1,9 @@
 <?php
+    /*
+     *  管理员登录
+     *  与数据库中的管理员表进行对比
+     */
+
     //登录各种检测
     $username = $_POST['username']; //trim可以去头尾空格
     $password = $_POST['password'];

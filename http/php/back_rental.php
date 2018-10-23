@@ -1,5 +1,9 @@
 <?php
-  //还车
+ /*
+ *  还车实现
+ *  将还车的数据加入到数据库中
+ */
+
 
   //计算两日期相差函数
 function diffBetweenTwoDays ($day1, $day2)

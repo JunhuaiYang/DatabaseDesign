@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  用户注册
+ * 
+ */
+
     //注册操作
     $username = $_POST['username'];
     $password = $_POST['password'];
