@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  新增车辆
+ * 新增车辆信息到数据表中
+ */
+
 //取得数据
   $cplant = $_POST['cplant'];
   $cbrand = $_POST['cbrand'];

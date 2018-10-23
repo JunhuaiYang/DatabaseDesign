@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  管理员注册
+ *  新增管理员用户
+ */
+
     //注册操作
 $username = $_POST['username'];
 $password = $_POST['password'];

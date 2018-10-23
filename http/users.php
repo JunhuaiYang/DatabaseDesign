@@ -38,7 +38,7 @@ require 'admin/smarty/libs/Smarty.class.php';
 //记录ip
 require_once "php/get_ip.php";
 //日志
-clientlog();
+// clientlog();
 
 ?>
 

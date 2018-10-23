@@ -1,4 +1,9 @@
 <?php
+ /*
+ *  确认租车订单
+ * 确认信息加入到数据表中
+ */
+
   //确认订单
 
 $contractid = $_POST['contractid'];
